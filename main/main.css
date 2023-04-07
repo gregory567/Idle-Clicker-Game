@@ -20,4 +20,10 @@
     font-family: Arial, Helvetica, sans-serif;
     color: navy;
 }
+
+.grow-shrink {
+    transform: scale(1.03);
+}
+
+  
   
