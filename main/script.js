@@ -18,3 +18,9 @@ pizzaButton.addEventListener("click", function(){
         pizzaButton.classList.remove('grow-shrink');
     }, 50);
 });
+
+// Day counter interval function
+setInterval(function() {
+  daysPassed++;
+  dayCounter.innerText = daysPassed;
+}, 2 * 60 * 1000); // 2 minutes = 120000 milliseconds

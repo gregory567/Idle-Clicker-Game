@@ -1,4 +1,9 @@
 
+
+* {
+    box-sizing: border-box;
+}
+
 /*container div of pizza button*/
 .button-container {
     display: flex;
