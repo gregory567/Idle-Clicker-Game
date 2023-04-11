@@ -2,13 +2,18 @@
 
 const pizzaButton = document.getElementById("pizza-button");
 const pizzaCounter = document.getElementById("pizza-count");
+const moneyCounter = document.getElementById("money-count");
 const pizzaPlusCounter = document.getElementById("pizza-plus-counter");
 const dayCounter = document.getElementById("day-count");
 
 const Clock = document.getElementById("clock");
 
+var currentLevel=1; 
 
 var pizzaStorage=100;
+
+var pizzaPrice=2.50;
+var curMoney=0;
 
 let pizzasWarmedUp = 0;
 let daysPassed = 0;
@@ -17,6 +22,18 @@ let daysPassed = 0;
 var plusCounter=0;
 var plusCounterDecreaseSpeed=75;
 var timeoutHandle;
+
+function GetLevel()
+{
+  console.log("Current level: "+currentLevel);
+  //If currentLevel = x, enable element on site
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Loaded game!");
+  GetLevel();
+});
+
 
 function ReducePlusCounter()
 { 
@@ -32,6 +49,10 @@ function ReducePlusCounter()
       
       pizzasWarmedUp++;
       pizzaCounter.innerText = pizzasWarmedUp;
+      curMoney+=pizzaPrice;
+      moneyCounter.innerText=parseFloat(curMoney).toFixed(2);
+
+
       if (plusCounter>0)
       {
         setTimeout(function(){
@@ -72,8 +93,10 @@ pizzaButton.addEventListener("click", function(){
         pizzaButton.style.transform = "scale(1.05)";
     }, 50);
     }
-    else {
+    else if (currentLevel==1) {
       alert("You have no frozen pizzas left!");
+      currentLevel=2;
+      GetLevel();
     }
     
 });
