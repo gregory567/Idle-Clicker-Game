@@ -7,6 +7,9 @@ const dayCounter = document.getElementById("day-count");
 
 const Clock = document.getElementById("clock");
 
+
+var pizzaStorage=100;
+
 let pizzasWarmedUp = 0;
 let daysPassed = 0;
 
@@ -55,7 +58,10 @@ pizzaButton.addEventListener("click", function() {
 
 pizzaButton.addEventListener("click", function(){
     //pizzaButton.classList.add('grow-shrink');
-    pizzaButton.style.transform = "scale(0.9)";
+    if (pizzaStorage > 0)
+    {
+      pizzaStorage--;
+      pizzaButton.style.transform = "scale(0.9)";
       plusCounter++;
       pizzaPlusCounter.innerText="+"+plusCounter;
       clearTimeout(timeoutHandle); //Reset "+1" counter timeout on click
@@ -65,6 +71,11 @@ pizzaButton.addEventListener("click", function(){
         //pizzaButton.classList.remove('grow-shrink');
         pizzaButton.style.transform = "scale(1.05)";
     }, 50);
+    }
+    else {
+      alert("You have no frozen pizzas left!");
+    }
+    
 });
 
 pizzaButton.onmouseover = function(){
