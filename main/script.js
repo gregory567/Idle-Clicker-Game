@@ -16,7 +16,7 @@ var pizzaPrice=2.50;
 var curMoney=0;
 
 let pizzasWarmedUp = 0;
-let daysPassed = 0;
+let daysPassed = 1;
 
 
 var plusCounter=0;
@@ -123,11 +123,7 @@ var seconds = 0;
 
 // update the clock every second
 setInterval(function() {
-  // increment the seconds
-  seconds++;
-  // if the seconds reach 60, reset to 0 and increment the minutes
-  if (seconds === 60) {
-    seconds = 0;
+  
     minutes++;
     // if the minutes reach 60, reset to 0 and increment the hours
     if (minutes === 60) {
@@ -138,8 +134,8 @@ setInterval(function() {
         hours = 0;
       }
     }
-  }
+  
   // display the time in HH:MM:SS format
-  let timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+  let timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
   Clock.textContent = timeString;
-}, 1000/720);
+},83);
