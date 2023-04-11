@@ -2,23 +2,78 @@
 
 const pizzaButton = document.getElementById("pizza-button");
 const pizzaCounter = document.getElementById("pizza-count");
+const pizzaPlusCounter = document.getElementById("pizza-plus-counter");
 const dayCounter = document.getElementById("day-count");
+
 const Clock = document.getElementById("clock");
 
 let pizzasWarmedUp = 0;
 let daysPassed = 0;
 
+
+var plusCounter=0;
+var plusCounterDecreaseSpeed=75;
+var timeoutHandle;
+
+function ReducePlusCounter()
+{ 
+      plusCounter--;
+      if (plusCounter==0)
+      {
+        pizzaPlusCounter.innerText="";
+      }
+      else 
+      {
+        pizzaPlusCounter.innerText="+"+plusCounter;
+      }
+      
+      pizzasWarmedUp++;
+      pizzaCounter.innerText = pizzasWarmedUp;
+      if (plusCounter>0)
+      {
+        setTimeout(function(){
+          ReducePlusCounter();
+        },plusCounterDecreaseSpeed)
+      }
+      
+      
+}
+
+function startCounter()
+{
+  timeoutHandle = window.setTimeout(function() {
+    ReducePlusCounter();
+  },1500)
+}
+
+/*
 pizzaButton.addEventListener("click", function() {
-  pizzasWarmedUp++;
-  pizzaCounter.innerText = pizzasWarmedUp;
+      pizzasWarmedUp++;
+      pizzaCounter.innerText = pizzasWarmedUp;
 });
+*/
 
 pizzaButton.addEventListener("click", function(){
-    pizzaButton.classList.add('grow-shrink');
+    //pizzaButton.classList.add('grow-shrink');
+    pizzaButton.style.transform = "scale(0.9)";
+      plusCounter++;
+      pizzaPlusCounter.innerText="+"+plusCounter;
+      clearTimeout(timeoutHandle); //Reset "+1" counter timeout on click
+     startCounter();
+    
     setTimeout(function() {
-        pizzaButton.classList.remove('grow-shrink');
+        //pizzaButton.classList.remove('grow-shrink');
+        pizzaButton.style.transform = "scale(1.05)";
     }, 50);
 });
+
+pizzaButton.onmouseover = function(){
+  pizzaButton.style.transform = "scale(1.05)";
+};
+pizzaButton.onmouseleave = function(){
+  pizzaButton.style.transform = "none";
+};
+
 
 // Day counter interval function
 setInterval(function() {
