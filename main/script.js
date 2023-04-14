@@ -75,6 +75,10 @@ pizzaButton.addEventListener("click", function(){
       alert("You have no frozen pizzas left!");
       currentLevel++;
       GetLevel();
+      const scriptContainer = document.getElementById("script-container");
+      const level2ScriptTag = document.createElement("script");
+      level2ScriptTag.setAttribute("src", "./level2.js");
+      scriptContainer.appendChild(level2ScriptTag);
     }
     
 });
