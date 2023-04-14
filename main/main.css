@@ -39,12 +39,6 @@
     color: green;
 }
 
-/*animation for pizza button*/
-.grow-shrink {
-    transform: scale(1.03);
-    
-}
-
 .container{
     border: 2px solid black;
     padding-bottom: 15px;

@@ -23,9 +23,8 @@ var plusCounter=0;
 var plusCounterDecreaseSpeed=75;
 var timeoutHandle;
 
-function GetLevel()
-{
-  console.log("Current level: "+currentLevel);
+function GetLevel(){
+  console.log("Current level: " + currentLevel);
   //If currentLevel = x, enable element on site
 }
 
@@ -35,56 +34,41 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function ReducePlusCounter()
-{ 
+function ReducePlusCounter(){ 
       plusCounter--;
-      if (plusCounter==0)
-      {
+      if (plusCounter==0){
         pizzaPlusCounter.innerText="";
-      }
-      else 
-      {
-        pizzaPlusCounter.innerText="+"+plusCounter;
+      } else {
+        pizzaPlusCounter.innerText = "+" + plusCounter;
       }
       
       pizzasWarmedUp++;
       pizzaCounter.innerText = pizzasWarmedUp;
-      curMoney+=pizzaPrice;
-      moneyCounter.innerText=parseFloat(curMoney).toFixed(2);
+      curMoney += pizzaPrice;
+      moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
 
-      if (plusCounter>0)
-      {
+      if (plusCounter>0){
         setTimeout(function(){
           ReducePlusCounter();
-        },plusCounterDecreaseSpeed)
+        }, plusCounterDecreaseSpeed)
       }
       
       
 }
 
-function startCounter()
-{
+function startCounter(){
   timeoutHandle = window.setTimeout(function() {
     ReducePlusCounter();
   },1500)
 }
 
-/*
-pizzaButton.addEventListener("click", function() {
-      pizzasWarmedUp++;
-      pizzaCounter.innerText = pizzasWarmedUp;
-});
-*/
-
 pizzaButton.addEventListener("click", function(){
-    //pizzaButton.classList.add('grow-shrink');
-    if (pizzaStorage > 0)
-    {
+    if (pizzaStorage > 0){
       pizzaStorage--;
       pizzaButton.style.transform = "scale(0.9)";
       plusCounter++;
-      pizzaPlusCounter.innerText="+"+plusCounter;
+      pizzaPlusCounter.innerText = "+" + plusCounter;
       clearTimeout(timeoutHandle); //Reset "+1" counter timeout on click
      startCounter();
     
@@ -104,6 +88,7 @@ pizzaButton.addEventListener("click", function(){
 pizzaButton.onmouseover = function(){
   pizzaButton.style.transform = "scale(1.05)";
 };
+
 pizzaButton.onmouseleave = function(){
   pizzaButton.style.transform = "none";
 };
@@ -119,7 +104,6 @@ setInterval(function() {
 // get the current time
 var hours = 0;
 var minutes = 0;
-var seconds = 0;
 
 // update the clock every second
 setInterval(function() {
@@ -138,4 +122,4 @@ setInterval(function() {
   // display the time in HH:MM:SS format
   let timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
   Clock.textContent = timeString;
-},83);
+}, 83);
