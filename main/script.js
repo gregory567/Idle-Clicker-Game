@@ -5,7 +5,6 @@ const pizzaCounter = document.getElementById("pizza-count");
 const moneyCounter = document.getElementById("money-count");
 const pizzaPlusCounter = document.getElementById("pizza-plus-counter");
 const dayCounter = document.getElementById("day-count");
-
 const Clock = document.getElementById("clock");
 
 var currentLevel=1; 
@@ -73,13 +72,11 @@ pizzaButton.addEventListener("click", function(){
      startCounter();
     
     setTimeout(function() {
-        //pizzaButton.classList.remove('grow-shrink');
         pizzaButton.style.transform = "scale(1.05)";
     }, 50);
-    }
-    else if (currentLevel==1) {
+    } else if (currentLevel==1) {
       alert("You have no frozen pizzas left!");
-      currentLevel=2;
+      currentLevel++;
       GetLevel();
     }
     
@@ -123,3 +120,13 @@ setInterval(function() {
   let timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
   Clock.textContent = timeString;
 }, 83);
+
+
+
+
+
+
+
+
+
+
