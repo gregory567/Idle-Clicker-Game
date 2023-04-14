@@ -7,16 +7,13 @@ const pizzaPlusCounter = document.getElementById("pizza-plus-counter");
 const dayCounter = document.getElementById("day-count");
 const Clock = document.getElementById("clock");
 
-var currentLevel=1; 
-
 var pizzaStorage=100;
-
-var pizzaPrice=2.50;
-var curMoney=0;
-
 let pizzasWarmedUp = 0;
-let daysPassed = 1;
+var pizzaPrice=2.50;
 
+var currentLevel=1; 
+var curMoney=0;
+let daysPassed = 1;
 
 var plusCounter=0;
 var plusCounterDecreaseSpeed=75;
