@@ -77,7 +77,7 @@ pizzaButton.addEventListener("click", function(){
       GetLevel();
       const scriptContainer = document.getElementById("script-container");
       const level2ScriptTag = document.createElement("script");
-      level2ScriptTag.setAttribute("src", "./level2.js");
+      level2ScriptTag.setAttribute("src", "./include js/level2.js");
       scriptContainer.appendChild(level2ScriptTag);
     }
     
