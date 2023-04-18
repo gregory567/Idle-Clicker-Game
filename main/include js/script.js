@@ -7,8 +7,10 @@ const pizzaPlusCounter = document.getElementById("pizza-plus-counter");
 const dayCounter = document.getElementById("day-count");
 const Clock = document.getElementById("clock");
 
+let pizzaStorageContainer;
+
 // intialize essential variables 
-var pizzaStorage=100;
+var pizzaStorage=5;
 let pizzasWarmedUp = 0;
 var pizzaPrice=2.50;
 
@@ -28,6 +30,14 @@ $(document).ready(function() {
 
 function GetLevel(){
   console.log("Current level: " + currentLevel);
+  if (currentLevel>=2)
+  {
+    const scriptContainer = document.getElementById("script-container");
+      const level2ScriptTag = document.createElement("script");
+      level2ScriptTag.setAttribute("src", "./include js/level2.js");
+      scriptContainer.appendChild(level2ScriptTag);
+      
+  }
   //If currentLevel = x, enable element on site
 }
 
@@ -87,10 +97,7 @@ pizzaButton.addEventListener("click", function(){
       currentLevel++;
       GetLevel();
       // load the js script of level 2
-      const scriptContainer = document.getElementById("script-container");
-      const level2ScriptTag = document.createElement("script");
-      level2ScriptTag.setAttribute("src", "./include js/level2.js");
-      scriptContainer.appendChild(level2ScriptTag);
+      
     }
     
 });
