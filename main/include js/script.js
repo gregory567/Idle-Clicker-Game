@@ -23,6 +23,7 @@ var timeoutHandle;
 // Display the welcome modal on page load
 $(document).ready(function() {
   $("#welcomeModal").modal("show");
+  pizzaButton.style.border="none";
 });
 
 function GetLevel(){

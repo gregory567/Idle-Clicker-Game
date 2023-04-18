@@ -18,8 +18,6 @@
     background-size: cover;
     width: 200px;
     height: 200px;
-    border-radius: 50%;
-    border: 2px solid black;
     transition: .1s ease-in-out 0s;
 }
 #pizza-button:hover {
