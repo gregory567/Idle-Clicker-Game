@@ -7,12 +7,17 @@ const pizzaPlusCounter = document.getElementById("pizza-plus-counter");
 const dayCounter = document.getElementById("day-count");
 const Clock = document.getElementById("clock");
 
+//Level2
+const level2div = document.getElementById("level2div");
 let pizzaStorageContainer;
+let buyPizzaButton;
+let pizzaPriceContainer
 
 // intialize essential variables 
-var pizzaStorage=5;
+var pizzaStorage=50;
 let pizzasWarmedUp = 0;
-var pizzaPrice=2.50;
+var pizzaValue=2.50;
+var pizzaPrice=1.50;
 
 var currentLevel=1; 
 var curMoney=0;
@@ -57,7 +62,7 @@ function ReducePlusCounter(){
       
       pizzasWarmedUp++;
       pizzaCounter.innerText = pizzasWarmedUp;
-      curMoney += pizzaPrice;
+      curMoney += pizzaValue;
       moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
 
@@ -75,6 +80,18 @@ function startCounter(){
   timeoutHandle = window.setTimeout(function() {
     ReducePlusCounter();
   },1500)
+}
+
+function BuyPizza()
+{
+  if (curMoney >= pizzaPrice)
+  {
+    curMoney-=pizzaPrice;
+    pizzaStorage++;
+    moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+    pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage + "<br>";
+    
+  }
 }
 
 // function which determines what will happen if the pizza button is clicked
