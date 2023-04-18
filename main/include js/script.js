@@ -99,6 +99,10 @@ pizzaButton.addEventListener("click", function(){
     // as long as the initial pizza storage of 100 is not used up
     if (pizzaStorage > 0){
       pizzaStorage--;
+      if (currentLevel>=2)
+      {
+        pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
+      }
       pizzaButton.style.transform = "scale(0.9)";
       plusCounter++;
       pizzaPlusCounter.innerText = "+" + plusCounter;
