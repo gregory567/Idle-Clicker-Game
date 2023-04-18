@@ -1,4 +1,5 @@
 
+// create DOM elements and append them to the html document
 // find the parent element with class "row" and id "second_row"
 const secondRowElement = document.getElementById("second_row");
 
@@ -29,7 +30,7 @@ pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
 //pizzaStorageContainer.insertAdjacentHTML("afterbegin","Frozen Pizzas: " + pizzaStorage);
 level2Div.appendChild(pizzaStorageContainer);
 
-// Append the new level2div container to the second column
+// append the new level2div container to the new column and the new column to the second row
 newCol3.appendChild(level2Div);
 secondRowElement.appendChild(newCol3);
 
@@ -43,7 +44,7 @@ function BuyPizza(){
         curMoney-=pizzaPrice;
         // increase number of frozen pizzas by 1
         pizzaStorage++;
-        // display updated variables 
+        // display updated variables to user
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
         pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage + "<br>";
     }
