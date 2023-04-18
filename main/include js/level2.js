@@ -12,11 +12,19 @@ const level2Div = document.createElement("div");
 level2Div.id = "level2div"; // level2Div.setAttribute("id", "level2div");
 level2Div.classList.add("button-container");
 
-// create button to buy more pizzas
+// create a new button to 1 pizza
 const buyPizzaButton = document.createElement("button");
 buyPizzaButton.setAttribute("onclick", "BuyPizza()");
+buyPizzaButton.classList.add("buy-button");
 buyPizzaButton.innerHTML = "Buy Frozen Pizza";
 level2Div.appendChild(buyPizzaButton);
+
+// create a new button to buy 10 pizzas
+const buyTenPizzasButton = document.createElement("button");
+buyTenPizzasButton.setAttribute("onclick", "BuyTenPizzas()");
+buyTenPizzasButton.classList.add("buy-button");
+buyTenPizzasButton.innerHTML = "Buy 10 Frozen Pizzas";
+level2Div.appendChild(buyTenPizzasButton);
 
 // create p tag to display current price of pizza 
 const pizzaPriceContainer = document.createElement("p");
@@ -34,6 +42,11 @@ level2Div.appendChild(pizzaStorageContainer);
 newCol3.appendChild(level2Div);
 secondRowElement.appendChild(newCol3);
 
+// if the pizza button is clicked, display the new (decreased) number of pizzas in storage 
+pizzaButton.addEventListener("click", function(){
+    pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
+});
+
 
 // new function to purchase more pizzas: checks available funds, decreases funds by price of pizza,
 // increments number of pizzas in storage (frozen pizzas)
@@ -50,8 +63,24 @@ function BuyPizza(){
     }
 }
 
+// new function to purchase 10 pizzas: checks available funds, decreases funds by 10 times the price of pizza,
+// increments number of pizzas in storage (frozen pizzas) by 10
+function BuyTenPizzas(){
+    // calculate the price of 10 pizzas
+    const tenPizzasPrice = pizzaPrice * 10;
+    
+    // check if enough money available 
+    if (curMoney >= tenPizzasPrice){
+        // decrease money by 10 times the current price of pizza 
+        curMoney -= tenPizzasPrice;
+        // increase number of frozen pizzas by 10
+        pizzaStorage += 10;
+        // display updated variables to user
+        moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+        pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage + "<br>";
+    }
+}
 
-// if the pizza button is clicked, display the new (decreased) number of pizzas in storage 
-pizzaButton.addEventListener("click", function(){
-    pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
-});
+
+
+

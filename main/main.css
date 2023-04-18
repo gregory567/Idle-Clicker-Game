@@ -13,6 +13,11 @@
     padding:10px;
 }
 
+.buy-button {
+    display: inline-block;
+}
+  
+
 #pizza-button {
     background-image: url('./pictures/pizza.jpg'); 
     background-size: cover;
