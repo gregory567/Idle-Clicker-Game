@@ -146,12 +146,14 @@ function GeneratePizza(){
         pizzaStorage--;
         pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
   
-        // increment plus counter and display it
-        plusCounter++;
-        pizzaPlusCounter.innerText = "+" + plusCounter;
-        clearTimeout(timeoutHandle); // reset "+1" counter timeout on click
-        // start ReducePlusCounter with timeout 
-        startCounter();
+        // increment the number of warmed up pizzas 
+      pizzasWarmedUp++;
+      // update the displayed number of prepared pizzas (visible for the user)
+      pizzaCounter.innerText = pizzasWarmedUp;
+      // increment the current funds
+      curMoney += pizzaValue;
+      // update the money counter variable (visible for the user)
+      moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
     }
 }
 
