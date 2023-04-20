@@ -16,6 +16,15 @@
 .buy-button {
     display: inline-block;
 }
+.ad {
+    position: absolute;
+  top: 1%;
+  left: 1%;
+  width: 13%;
+  height: 75%;
+  border: 5px solid gray;
+
+}
   
 
 #pizza-button {

@@ -6,6 +6,7 @@ const moneyCounter = document.getElementById("money-count");
 const pizzaPlusCounter = document.getElementById("pizza-plus-counter");
 const dayCounter = document.getElementById("day-count");
 const Clock = document.getElementById("clock");
+const leftAd = document.getElementById("l_AD");
 
 // intialize essential variables 
 var pizzaStorage=50;
@@ -25,6 +26,7 @@ var timeoutHandle;
 $(document).ready(function() {
   $("#welcomeModal").modal("show");
   pizzaButton.style.border="none"; // we need this line to fix the bug with the background of the pizza button
+  leftAd.style.opacity=0;
 });
 
 // this function prints the current level to the console and includes the script-file of level 2
@@ -38,6 +40,12 @@ function GetLevel(){
     scriptContainer.appendChild(level2ScriptTag); 
   }
   //If currentLevel = x, enable element on site
+}
+
+function GetAdMoney()
+{
+ curMoney+=0.5;
+ moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 }
 
 // print to the console on page load 

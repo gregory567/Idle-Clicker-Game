@@ -19,6 +19,8 @@ buyPizzaButton.classList.add("buy-button");
 buyPizzaButton.innerHTML = "Buy Frozen Pizza";
 level2Div.appendChild(buyPizzaButton);
 
+
+
 // create a new button to buy 10 pizzas
 const buyTenPizzasButton = document.createElement("button");
 buyTenPizzasButton.setAttribute("onclick", "BuyTenPizzas()");
@@ -42,7 +44,12 @@ level2Div.appendChild(pizzaStorageContainer);
 newCol3.appendChild(level2Div);
 secondRowElement.appendChild(newCol3);
 
-
+const createAdField = document.createElement("div");
+createAdField.classList.add("button-container");
+const createAdButton = document.createElement("button");
+createAdButton.innerText="Enable Site Ads";
+createAdButton.setAttribute("onclick", "CreateAd()");
+createAdField.appendChild(createAdButton);
 // new function to purchase more pizzas: checks available funds, decreases funds by price of pizza,
 // increments number of pizzas in storage (frozen pizzas)
 function BuyPizza(){
@@ -56,6 +63,17 @@ function BuyPizza(){
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
         pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage + "<br>";
     }
+    else if (pizzaStorage==0)
+    {
+        newCol3.appendChild(createAdField);
+    }
+}
+
+function CreateAd() //Enables advertisement and removes the ability to enable it
+{
+    leftAd.style.opacity=1;
+    setInterval(GetAdMoney,2000);
+    newCol3.removeChild(createAdField);
 }
 
 // new function to purchase 10 pizzas: checks available funds, decreases funds by 10 times the price of pizza,
@@ -132,6 +150,7 @@ function createAutomat(){
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
         currentPizzaMultiplier.innerHTML = "Current Pizza Multiplier: x" + pizzaMultiplier + "<br>";
         currentAutomatPrice.innerHTML = "Current Price of Pizza Automat: " + automatPrice + "<br>";
+
         // call the GeneratePizza function every second
         setInterval(GeneratePizza, 1000);
     }
