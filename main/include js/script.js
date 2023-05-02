@@ -23,7 +23,7 @@ var plusCounterDecreaseSpeed=75;
 var timeoutHandle;
 
 
-//Developer console commands
+//Developer console comma
 function setMoney(amount)
 {
   curMoney=amount;

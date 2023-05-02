@@ -150,6 +150,7 @@ function createAutomat(){
         pizzaMultiplier++;
         // increase price of automat
         automatPrice*=1.5;
+        automatPrice=Math.round(automatPrice*100)/100; //Round to two decimals
         // display updated variables to user
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
         currentPizzaMultiplier.innerHTML = "Current Pizza Multiplier: x" + pizzaMultiplier + "<br>";
