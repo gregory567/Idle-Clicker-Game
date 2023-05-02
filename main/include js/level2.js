@@ -68,6 +68,10 @@ function BuyPizza(){
         newCol3.appendChild(createAdField);
     }
 }
+function enableAdField() //For developer console
+{
+    newCol3.appendChild(createAdField);
+}
 
 function CreateAd() //Enables advertisement and removes the ability to enable it
 {
@@ -176,6 +180,12 @@ function GeneratePizza(){
     }
 }
 
+function setPizzaStorage(amount) //For developer console
+{
+  pizzaStorage=amount;
+  pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
+  console.log("Set frozen pizzas to " + amount);
+}
 
 
 

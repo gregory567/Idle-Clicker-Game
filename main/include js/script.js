@@ -22,6 +22,31 @@ var plusCounter=0;
 var plusCounterDecreaseSpeed=75;
 var timeoutHandle;
 
+
+//Developer console commands
+function setMoney(amount)
+{
+  curMoney=amount;
+  moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+  console.log("Set money to "+amount);
+
+}
+
+function setTotalPizzas(amount)
+{
+  pizzasWarmedUp=amount;
+  pizzaCounter.innerText = pizzasWarmedUp;
+  console.log("Set total pizzas to "+amount);
+}
+
+function setLevel(num)
+{
+  currentLevel=num;
+  GetLevel();
+}
+
+
+
 // display the welcome modal on page load
 $(document).ready(function() {
   $("#welcomeModal").modal("show");
@@ -53,6 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Loaded game!");
   GetLevel();
 });
+
+
+
+
 
 // function that reduces the plus counter variable, 
 // increases the number of prepared pizzas and increments the money counter
