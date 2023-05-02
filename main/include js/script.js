@@ -23,6 +23,17 @@ var plusCounterDecreaseSpeed=75;
 var timeoutHandle;
 
 
+
+var autoBuyerDelay=1000;
+var autoBuyerPrice=50;
+var autoBuyerPriceGrowth=1.08;
+var maxAutoPizzas=10; //If player has this many frozen pizzas, autobuyer will not buy any more pizzas
+var autoBuyerAmount=0; 
+var autoBuyerActive=true;
+
+const abField = document.getElementById("autobuyer-container");
+
+
 //Developer console comma
 function setMoney(amount)
 {
@@ -31,6 +42,8 @@ function setMoney(amount)
   console.log("Set money to "+amount);
 
 }
+
+
 
 function setTotalPizzas(amount)
 {
@@ -44,6 +57,7 @@ function setLevel(num)
   currentLevel=num;
   GetLevel();
 }
+
 
 
 
@@ -63,6 +77,7 @@ function GetLevel(){
     const level2ScriptTag = document.createElement("script");
     level2ScriptTag.setAttribute("src", "./include js/level2.js");
     scriptContainer.appendChild(level2ScriptTag); 
+    
   }
   //If currentLevel = x, enable element on site
 }

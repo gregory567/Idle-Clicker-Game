@@ -12,6 +12,10 @@
     border: 2px solid black;
     padding:10px;
 }
+.button:hover {
+    transform:scale(1.02);
+    background-color: antiquewhite;
+}
 
 .buy-button {
     display: inline-block;
@@ -24,6 +28,22 @@
   height: 75%;
   border: 5px solid gray;
 
+}
+
+.centerdiv {
+    text-align:center;
+}
+
+
+.ab-on {
+    color:green;
+    border:1px solid black;
+    background-color: rgb(241, 241, 241);
+}
+.ab-off {
+    color:red;
+    border:1px solid black;
+    background-color: lightgray;
 }
   
 
