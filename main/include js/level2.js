@@ -1,5 +1,5 @@
-//set new winCondition and show the instructions modal for this level
-winCondition= 150;
+//set new winCondition (for level 2) and show the instructions modal for this level
+winCondition = 150;
 showModalLevel2();
 
 // create DOM elements and append them to the html document
@@ -29,7 +29,6 @@ buyTenPizzasButton.setAttribute("onclick", "BuyTenPizzas()");
 buyTenPizzasButton.classList.add("buy-button");
 buyTenPizzasButton.classList.add("button");
 buyTenPizzasButton.innerHTML = "Buy 10 Frozen Pizzas";
-
 level2Div.appendChild(buyTenPizzasButton);
 
 // create p tag to display current price of pizza 
@@ -40,7 +39,7 @@ level2Div.appendChild(pizzaPriceContainer);
 // create a new div with id "pizzastoragecontainer"
 const pizzaStorageContainer = document.createElement("div");
 pizzaStorageContainer.id = "pizzastoragecontainer"; // pizzaStorageContainer.setAttribute("id", "pizzastoragecontainer");
-pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
+pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage;
 //pizzaStorageContainer.insertAdjacentHTML("afterbegin","Frozen Pizzas: " + pizzaStorage);
 level2Div.appendChild(pizzaStorageContainer);
 
@@ -49,17 +48,24 @@ newCol3.appendChild(level2Div);
 secondRowElement.appendChild(newCol3);
 
 
-var l2active=false;
-
 const createAdField = document.createElement("div");
 createAdField.classList.add("button-container");
 const createAdButton = document.createElement("button");
-createAdButton.innerText="Enable Site Ads";
+createAdButton.innerText = "Enable Site Ads";
 createAdButton.classList.add("button");
 createAdButton.setAttribute("onclick", "CreateAd()");
 createAdField.appendChild(createAdButton);
-// new function to purchase more pizzas: checks available funds, decreases funds by price of pizza,
-// increments number of pizzas in storage (frozen pizzas)
+
+function CreateAd() { //Enables advertisement and removes the ability to enable it
+
+    leftAd.style.opacity = 1;
+    curMoney += 10;
+    moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+    newCol3.removeChild(createAdField);
+}
+
+// new function to purchase more pizzas: checks the available funds, decreases the funds by the price of 1 pizza,
+// increments the number of pizzas in storage (frozen pizzas)
 function BuyPizza(){
     // check if enough money available 
     if (curMoney >= pizzaPrice){
@@ -71,22 +77,6 @@ function BuyPizza(){
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
         pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage + "<br>";
     }
-    /* this is the wrongplace to check this condition -> must be checked when buying a machine
-    else if (pizzaStorage==0)
-    {
-        newCol3.appendChild(createAdField);
-    }
-    */
-}
-
-
-
-function CreateAd() //Enables advertisement and removes the ability to enable it
-{
-    leftAd.style.opacity=1;
-    curMoney+=10;
-    moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
-    newCol3.removeChild(createAdField);
 }
 
 // new function to purchase 10 pizzas: checks available funds, decreases funds by 10 times the price of pizza,
@@ -125,13 +115,13 @@ PizzaAutomat.classList.add("pizza-automat");
 PizzaAutomat.innerHTML = "Buy Pizza Machine";
 level2Divb.appendChild(PizzaAutomat);
 
-// create p tag to display current price of pizza 
+// create p tag to display the amount of pizza automats that have already been purchased
 var pizzaMultiplier = 0;
 const currentPizzaMultiplier = document.createElement("p");
 currentPizzaMultiplier.innerHTML = "";
 level2Divb.appendChild(currentPizzaMultiplier);
 
-// create p tag to display current price of pizza automat
+// create p tag to display the current price of a pizza automat
 var automatPrice = 75;
 const currentAutomatPrice = document.createElement("p");
 currentAutomatPrice.innerHTML = "Current Price of Pizza Automat: €" + automatPrice + "<br>";
@@ -139,27 +129,32 @@ level2Divb.appendChild(currentAutomatPrice);
 
 
 
+// this is an auxiliary variable to check if level 2 is already active
+var l2active = false;
 
 // if the pizza button is clicked, display the new (decreased) number of pizzas in storage 
-
 pizzaButton.addEventListener("click", function(){
-    pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
-    if (l2active==false)
-    {
-        addToLevelFunction();
-    }
+
+    pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage;
     
-    
+    // if level 2 is not activated yet, call addAutomats()
+    if (l2active == false){
+        addAutomats();
+    }  
 });
 
-function addToLevelFunction (){
-        newCol3b.appendChild(level2Divb);
-        secondRowElement.appendChild(newCol3b);
-        createABWindow();
-        l2active=true;
+// display the pizza automat, and the autobuyer immediately when reaching level 2
+function addAutomats (){
+    // display pizza automat window
+    newCol3b.appendChild(level2Divb);
+    secondRowElement.appendChild(newCol3b);
+    // display autobuyer window
+    createAutoBuyerWindow();
+    l2active = true;
 }
 
 
+// this function creates a pizza automat when the player buys one
 function createAutomat(){
     // check if enough money available 
     if(curMoney >= automatPrice){
@@ -168,8 +163,8 @@ function createAutomat(){
         // increase pizza multiplier
         pizzaMultiplier++;
         // increase price of automat
-        automatPrice=automatPrice*(Math.pow(1.5,pizzaMultiplier));
-        automatPrice=Math.round(automatPrice*100)/100; //Round to two decimals
+        automatPrice = automatPrice*(Math.pow(1.5,pizzaMultiplier));
+        automatPrice = Math.round(automatPrice*100)/100; //Round to two decimals
         // display updated variables to user
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
         currentPizzaMultiplier.innerHTML = "Current Pizza Multiplier: x" + pizzaMultiplier + "<br>";
@@ -179,6 +174,8 @@ function createAutomat(){
         setInterval(GeneratePizza, 1000);
     }
 
+    // if you run out of money when buying a pizza automat, and you don't have any pizzas left in storage,
+    // enable button for creating ad on the page immediately
     if(curMoney < pizzaPrice && pizzaStorage == 0) {
         newCol3.appendChild(createAdField);
         gameOverModal();
@@ -192,7 +189,7 @@ function GeneratePizza(){
     if (pizzaStorage > 0){
         // decrease pizza storage by 1
         pizzaStorage--;
-        pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
+        pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage;
 
         // increment the number of warmed up pizzas 
         pizzasWarmedUp++;
@@ -213,22 +210,21 @@ function GeneratePizza(){
 function toggleAutoBuyers()
 {
     const onoff = document.getElementById("ab-onoff");
-    if (onoff!=null)
-    {
-        if (autoBuyerActive==true)
-        {
-            onoff.innerHTML="OFF";
+    if (onoff != null){
+
+        if (autoBuyerActive == true){
+
+            onoff.innerHTML = "OFF";
             onoff.classList.remove("ab-on");
             onoff.classList.add("ab-off");
-            autoBuyerActive=false;
+            autoBuyerActive = false;
             console.log("Turned autobuyers OFF");
-        }
-        else 
-        {
-            onoff.innerHTML="ON";
+        } else {
+
+            onoff.innerHTML = "ON";
             onoff.classList.remove("ab-off");
             onoff.classList.add("ab-on");
-            autoBuyerActive=true;
+            autoBuyerActive = true;
             console.log("Turned autobuyers ON");
         }
     }   
@@ -238,39 +234,38 @@ function toggleAutoBuyers()
 
 function updateAutoBuyerWindow()
 {
-    document.getElementById("cur-price").innerHTML="<br>Current price: "+autoBuyerPrice;
-    document.getElementById("cur-amount").innerHTML="<br>Active AutoBuyers: "+autoBuyerAmount;
+    document.getElementById("cur-price").innerHTML = "<br>Current price: " + autoBuyerPrice;
+    document.getElementById("cur-amount").innerHTML = "<br>Active AutoBuyers: " + autoBuyerAmount;
     let slider = document.getElementById("ab-range");
     
-    document.getElementById("max-pizza-count").innerHTML=maxAutoPizzas;
+    document.getElementById("max-pizza-count").innerHTML = maxAutoPizzas;
 }
 
 
 function createAutoBuyer()
 {
-    if (curMoney >= autoBuyerPrice)
-    {
+    if (curMoney >= autoBuyerPrice) {
+
         curMoney-=autoBuyerPrice;
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
         autoBuyerAmount++;
-        autoBuyerPrice=autoBuyerPrice*Math.pow(autoBuyerPriceGrowth,autoBuyerAmount);
-        autoBuyerPrice=Math.round(autoBuyerPrice*100)/100;
+        autoBuyerPrice = autoBuyerPrice*Math.pow(autoBuyerPriceGrowth, autoBuyerAmount);
+        autoBuyerPrice = Math.round(autoBuyerPrice*100)/100;
         updateAutoBuyerWindow();
     }
 
-    if(curMoney < pizzaPrice && pizzaStorage == 0)
-    {
+    // if you run out of money when buying an autobuyer, and you don't have any pizzas left in storage,
+    // enable button for creating ad on the page immediately
+    if(curMoney < pizzaPrice && pizzaStorage == 0){
         newCol3.appendChild(createAdField);
         gameOverModal();
-
     }
 }
 
-function createABWindow()
+function createAutoBuyerWindow()
 {
-    
-    let firstDiv=document.createElement("div");
+    let firstDiv = document.createElement("div");
     firstDiv.classList.add("centerdiv");
     let buyABButton = document.createElement("button");
     buyABButton.innerHTML = "Buy AutoBuyer";
@@ -278,15 +273,15 @@ function createABWindow()
     buyABButton.classList.add("button");
     let curPrice = document.createElement("element");
     curPrice.id = "cur-price";
-    curPrice.innerHTML = "<br>Current price: "+autoBuyerPrice;
+    curPrice.innerHTML = "<br>Current price: " + autoBuyerPrice;
     let curAmt = document.createElement("element");
     curAmt.id = "cur-amount";
-    curAmt.innerHTML = "<br>Active AutoBuyers: "+autoBuyerAmount;
+    curAmt.innerHTML = "<br>Active AutoBuyers: " + autoBuyerAmount;
     firstDiv.appendChild(buyABButton);
     firstDiv.appendChild(curPrice);
     firstDiv.appendChild(curAmt);
 
-    let secondDiv=document.createElement("div");
+    let secondDiv = document.createElement("div");
     secondDiv.classList.add("centerdiv");
     let toggleABButton = document.createElement("button");
     toggleABButton.classList.add("button");
@@ -294,7 +289,7 @@ function createABWindow()
     toggleABButton.innerHTML = "Toggle AutoBuyers";
     
     secondDiv.appendChild(toggleABButton);
-    secondDiv.innerHTML+="<br>Status: ";
+    secondDiv.innerHTML += "<br>Status: ";
     let curStatus = document.createElement("element");
     curStatus.id = "ab-onoff";
     curStatus.innerHTML="ON";
@@ -303,14 +298,14 @@ function createABWindow()
 
     let thirdDiv = document.createElement("div");
     thirdDiv.classList.add("centerdiv");
-    thirdDiv.innerHTML="<br>Max frozen pizzas: <br>";
+    thirdDiv.innerHTML = "<br>Max frozen pizzas: <br>";
     let abSlider = document.createElement("input");
     abSlider.setAttribute("type","range");
     abSlider.setAttribute("min","0");
     abSlider.setAttribute("max","50");
     abSlider.setAttribute("value","10");
     abSlider.classList.add("slider");
-    abSlider.id="ab-range";
+    abSlider.id = "ab-range";
     abSlider.setAttribute("oninput","updateAutoBuyerWindow()");
     thirdDiv.appendChild(abSlider);
     let curMax = document.createElement("element");
@@ -318,36 +313,33 @@ function createABWindow()
     curMax.innerHTML=maxAutoPizzas;
     thirdDiv.appendChild(curMax);
 
-    abSlider.oninput = function() 
-    {
-    maxAutoPizzas=Math.round(this.value);
-    updateAutoBuyerWindow();
+    abSlider.oninput = function() {
+        maxAutoPizzas = Math.round(this.value);
+        updateAutoBuyerWindow();
     }
 
     setInterval(function() {
 
-        if (autoBuyerAmount > 0 && autoBuyerActive==true)
-        {
-            for (let i=0;i < autoBuyerAmount;i++)
-            {
-                if (pizzaStorage < maxAutoPizzas)
-                {
+        if (autoBuyerAmount > 0 && autoBuyerActive == true){
+
+            for (let i = 0; i < autoBuyerAmount; i++){
+                
+                if (pizzaStorage < maxAutoPizzas){
                     BuyPizza();
                 }
             }
         }
-    },autoBuyerDelay);
+    }, autoBuyerDelay);
 
     abField.classList.add("button-container");
     abField.appendChild(firstDiv);
     abField.appendChild(secondDiv);
     abField.appendChild(thirdDiv);
-    
 }
 
 
 
-//function that creates and displays the modal in case that the player has insufficient funds and no pizzas in storage
+// function that creates and displays the modal in case the player has insufficient funds and no pizzas left in storage
 function gameOverModal() {
 
     // Create the modal element
@@ -403,7 +395,7 @@ function gameOverModal() {
 
     // Create the modal body content
     const modalBodyContent = document.createElement('p');
-    modalBodyContent.textContent = 'You don`t have enough pizzas left and not enough money to buy new ones! Your only option is to display ads on your sites to get 10€ to buy another pizza!';
+    modalBodyContent.textContent = 'You don`t have enough pizzas left in storage and not enough money to buy new ones! Your only option is to display ads on your site to get 10€ to buy more pizzas!';
 
     
     // Append the modal body content to the modal body
@@ -497,7 +489,7 @@ function showModalLevel2() {
  
      // Create the modal body content
      const modalBodyContent = document.createElement('p');
-     modalBodyContent.textContent = 'There are no Frozen Pizzas left! You now have to buy Frozen Pizzas. It is now possible to buy Pizza Machines, that automatically create Pizzas as long as you have Frozen Pizzas left. It is now possible to buy an AutoBuyer Machines, that automatically buys Pizza as long as you have sufficient funds. To reach level 3 you need a total of '+winCondition+' Pizzas sold';
+     modalBodyContent.textContent = 'There are no Frozen Pizzas left! You now have to buy Frozen Pizzas. It is now possible to buy Pizza Machines, that automatically create Pizzas as long as you have Frozen Pizzas left. It is now possible to buy AutoBuyer Machines, that automatically buy Pizzas as long as you have sufficient funds. To reach level 3 you need a total of ' + winCondition + ' Pizzas sold.';
  
      
      // Append the modal body content to the modal body

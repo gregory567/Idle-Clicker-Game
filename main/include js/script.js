@@ -9,30 +9,30 @@ const Clock = document.getElementById("clock");
 const leftAd = document.getElementById("l_AD");
 
 // intialize essential variables 
-var pizzaStorage=50;
+var pizzaStorage = 50;
 let pizzasWarmedUp = 0;
-var pizzaValue=2.50;
-var pizzaPrice=1.50;
+var pizzaValue = 2.50;
+var pizzaPrice = 1.50;
 
-var currentLevel=1; 
-var curMoney=0;
+var currentLevel = 1; 
+var curMoney = 0;
 let daysPassed = 1;
 
-var plusCounter=0;
-var plusCounterDecreaseSpeed=75;
+var plusCounter = 0;
+var plusCounterDecreaseSpeed = 75;
 var timeoutHandle;
 
-//wincondition (=total amount of pizzas sold) to to get to the next level
+// winCondition (=total amount of pizzas sold) to get to the next level
 var winCondition = 0;
 
 
 
-var autoBuyerDelay=1000;
-var autoBuyerPrice=50;
-var autoBuyerPriceGrowth=1.08;
-var maxAutoPizzas=10; //If player has this many frozen pizzas, autobuyer will not buy any more pizzas
-var autoBuyerAmount=0; 
-var autoBuyerActive=true;
+var autoBuyerDelay = 1000;
+var autoBuyerPrice = 50; // initial price of the pizza buying machine
+var autoBuyerPriceGrowth = 1.5;
+var maxAutoPizzas = 10; //If the player has this many frozen pizzas, autobuyer will not buy any more pizzas
+var autoBuyerAmount = 0; 
+var autoBuyerActive = true;
 
 const abField = document.getElementById("autobuyer-container");
 
@@ -41,18 +41,17 @@ const abField = document.getElementById("autobuyer-container");
 
 // display the welcome modal on page load
 $(document).ready(function() {
-  $("#welcomeModal").modal("show");
+  $("#welcomeModal").modal("show"); 
   pizzaButton.style.border="none"; // we need this line to fix the bug with the background of the pizza button
-  leftAd.style.opacity=0;
+  leftAd.style.opacity = 0; // hide the div which contains the advertisement on the left hand side of the page
 });
 
 // print to the console on page load 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Loaded game!");
-  GetLevel();
+  console.log("Loaded game!"); 
 });
 
-// this function prints the current level to the console and includes the script-file of level 2
+// this function prints the current level to the console and includes the script-file of the next level
 function GetLevel(){
   console.log("Current level: " + currentLevel);
   if (currentLevel==2){
@@ -61,7 +60,7 @@ function GetLevel(){
     const level2ScriptTag = document.createElement("script");
     level2ScriptTag.setAttribute("src", "./include js/level2.js");
     scriptContainer.appendChild(level2ScriptTag); 
-    
+
   } else if (currentLevel==3) {
     // load the js script of level 3
     const scriptContainer = document.getElementById("script-container");
@@ -70,14 +69,9 @@ function GetLevel(){
     scriptContainer.appendChild(level3ScriptTag);
 
   }
-  //If currentLevel = x, enable element on site
+
 }
 
-function GetAdMoney()
-{
- curMoney+=0.5;
- moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
-}
 
 // function that reduces the plus counter variable, 
 // increases the number of prepared pizzas and increments the money counter
@@ -114,7 +108,7 @@ function ReducePlusCounter(){
 
 }
 
-// function to start the ReducePlusCounter function with delay 
+// function to start the ReducePlusCounter function with a delay of 1.5 seconds after the player stopped clicking
 function startCounter(){
   timeoutHandle = window.setTimeout(function() {
     ReducePlusCounter();
@@ -123,7 +117,7 @@ function startCounter(){
 
 // anonymous function which determines what will happen if the pizza button is clicked
 pizzaButton.addEventListener("click", function(){
-    // as long as the initial pizza storage of 100 is not used up
+    // as long as the initial pizza storage of 50 is not used up
     if (pizzaStorage > 0){
       // decrease pizza storage by 1
       pizzaStorage--;
@@ -141,7 +135,7 @@ pizzaButton.addEventListener("click", function(){
           pizzaButton.style.transform = "scale(1.05)";
       }, 50);
 
-    // when the initial pizza storage of 100 is used up
+    // when the initial pizza storage of 50 is used up
     } else if (currentLevel==1) {
       // step up to level 2 and call GetLevel function
       currentLevel++;
