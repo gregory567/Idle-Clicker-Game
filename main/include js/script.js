@@ -34,31 +34,6 @@ var autoBuyerActive=true;
 const abField = document.getElementById("autobuyer-container");
 
 
-//Developer console comma
-function setMoney(amount)
-{
-  curMoney=amount;
-  moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
-  console.log("Set money to "+amount);
-
-}
-
-
-
-function setTotalPizzas(amount)
-{
-  pizzasWarmedUp=amount;
-  pizzaCounter.innerText = pizzasWarmedUp;
-  console.log("Set total pizzas to "+amount);
-}
-
-function setLevel(num)
-{
-  currentLevel=num;
-  GetLevel();
-}
-
-
 
 
 // display the welcome modal on page load
@@ -68,10 +43,16 @@ $(document).ready(function() {
   leftAd.style.opacity=0;
 });
 
+// print to the console on page load 
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Loaded game!");
+  GetLevel();
+});
+
 // this function prints the current level to the console and includes the script-file of level 2
 function GetLevel(){
   console.log("Current level: " + currentLevel);
-  if (currentLevel>=2){
+  if (currentLevel==2){
     // load the js script of level 2
     const scriptContainer = document.getElementById("script-container");
     const level2ScriptTag = document.createElement("script");
@@ -87,16 +68,6 @@ function GetAdMoney()
  curMoney+=0.5;
  moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 }
-
-// print to the console on page load 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Loaded game!");
-  GetLevel();
-});
-
-
-
-
 
 // function that reduces the plus counter variable, 
 // increases the number of prepared pizzas and increments the money counter

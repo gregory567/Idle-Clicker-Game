@@ -77,10 +77,8 @@ function BuyPizza(){
         newCol3.appendChild(createAdField);
     }
 }
-function enableAdField() //For developer console
-{
-    newCol3.appendChild(createAdField);
-}
+
+
 
 function CreateAd() //Enables advertisement and removes the ability to enable it
 {
@@ -140,8 +138,6 @@ level2Divb.appendChild(currentAutomatPrice);
 
 
 
-
-
 // if the pizza button is clicked, display the new (decreased) number of pizzas in storage 
 
 pizzaButton.addEventListener("click", function(){
@@ -170,7 +166,7 @@ function createAutomat(){
         // increase pizza multiplier
         pizzaMultiplier++;
         // increase price of automat
-        automatPrice=automatPrice*(Math.pow(1.08,pizzaMultiplier));
+        automatPrice=automatPrice*(Math.pow(1.5,pizzaMultiplier));
         automatPrice=Math.round(automatPrice*100)/100; //Round to two decimals
         // display updated variables to user
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
@@ -202,12 +198,7 @@ function GeneratePizza(){
     }
 }
 
-function setPizzaStorage(amount) //For developer console
-{
-  pizzaStorage=amount;
-  pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
-  console.log("Set frozen pizzas to " + amount);
-}
+
 
 function toggleAutoBuyers()
 {
@@ -215,21 +206,21 @@ function toggleAutoBuyers()
     if (onoff!=null)
     {
         if (autoBuyerActive==true)
-    {
-        onoff.innerHTML="OFF";
-        onoff.classList.remove("ab-on");
-        onoff.classList.add("ab-off");
-        autoBuyerActive=false;
-        console.log("Turned autobuyers OFF");
-    }
-    else 
-    {
-        onoff.innerHTML="ON";
-        onoff.classList.remove("ab-off");
-        onoff.classList.add("ab-on");
-        autoBuyerActive=true;
-        console.log("Turned autobuyers ON");
-    }
+        {
+            onoff.innerHTML="OFF";
+            onoff.classList.remove("ab-on");
+            onoff.classList.add("ab-off");
+            autoBuyerActive=false;
+            console.log("Turned autobuyers OFF");
+        }
+        else 
+        {
+            onoff.innerHTML="ON";
+            onoff.classList.remove("ab-off");
+            onoff.classList.add("ab-on");
+            autoBuyerActive=true;
+            console.log("Turned autobuyers ON");
+        }
     }
     
 }
