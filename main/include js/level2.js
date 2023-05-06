@@ -72,10 +72,12 @@ function BuyPizza(){
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
         pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage + "<br>";
     }
+    /* this is the wrongplace to check this condition -> must be checked when buying a machine
     else if (pizzaStorage==0)
     {
         newCol3.appendChild(createAdField);
     }
+    */
 }
 
 
@@ -83,7 +85,8 @@ function BuyPizza(){
 function CreateAd() //Enables advertisement and removes the ability to enable it
 {
     leftAd.style.opacity=1;
-    setInterval(GetAdMoney,2000);
+    curMoney+=10;
+    moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
     newCol3.removeChild(createAdField);
 }
 
@@ -176,6 +179,12 @@ function createAutomat(){
         // call the GeneratePizza function every second
         setInterval(GeneratePizza, 1000);
     }
+
+    if(curMoney < pizzaPrice && pizzaStorage == 0) {
+        //alert fehlt hier noch
+        newCol3.appendChild(createAdField);
+        gameOverModal();
+    }
 }
 
 
@@ -240,16 +249,23 @@ function updateAutoBuyerWindow()
 
 function createAutoBuyer()
 {
-  if (curMoney >= autoBuyerPrice)
-  {
-    curMoney-=autoBuyerPrice;
-    moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+    if (curMoney >= autoBuyerPrice)
+    {
+        curMoney-=autoBuyerPrice;
+        moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
-    autoBuyerAmount++;
-    autoBuyerPrice=autoBuyerPrice*Math.pow(autoBuyerPriceGrowth,autoBuyerAmount);
-    autoBuyerPrice=Math.round(autoBuyerPrice*100)/100;
-    updateAutoBuyerWindow();
-  }
+        autoBuyerAmount++;
+        autoBuyerPrice=autoBuyerPrice*Math.pow(autoBuyerPriceGrowth,autoBuyerAmount);
+        autoBuyerPrice=Math.round(autoBuyerPrice*100)/100;
+        updateAutoBuyerWindow();
+    }
+
+    if(curMoney < pizzaPrice && pizzaStorage == 0)
+    {
+        newCol3.appendChild(createAdField);
+        gameOverModal();
+
+    }
 }
 
 function createABWindow()
@@ -333,6 +349,103 @@ function createABWindow()
     abField.appendChild(secondDiv);
     abField.appendChild(thirdDiv);
     
+}
+
+
+
+//function that creates and displays the modal in case that the player has insufficient funds and no pizzas in storage
+function gameOverModal() {
+
+    // Create the modal element
+    const modal = document.createElement('div');
+    modal.classList.add('modal', 'fade');
+    modal.id = 'gameOverModal';
+    modal.tabIndex = '-1';
+    modal.role = 'dialog';
+    modal.setAttribute('aria-labelledby', 'gameOverModalLabel');
+    modal.setAttribute('aria-hidden', 'true');
+
+    // Create the modal dialog element
+    const modalDialog = document.createElement('div');
+    modalDialog.classList.add('modal-dialog', 'modal-dialog-centered');
+    modalDialog.role = 'document';
+
+    // Create the modal content element
+    const modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
+
+    // Create the modal header element
+    const modalHeader = document.createElement('div');
+    modalHeader.classList.add('modal-header');
+
+    // Create the modal title element
+    const modalTitle = document.createElement('h5');
+    modalTitle.classList.add('modal-title');
+    modalTitle.id = 'gameOverModalLabel';
+    modalTitle.textContent = 'Game Over?!';
+
+    // Create the close button element
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.classList.add('close');
+    closeButton.setAttribute('data-bs-dismiss', 'modal');
+    closeButton.setAttribute('aria-label', 'Close');
+
+    // Create the close button icon
+    const closeButtonIcon = document.createElement('span');
+    closeButtonIcon.setAttribute('aria-hidden', 'true');
+    closeButtonIcon.innerHTML = '&times;';
+
+    // Append the close button icon to the close button
+    closeButton.appendChild(closeButtonIcon);
+
+    // Append the modal title and close button to the modal header
+    modalHeader.appendChild(modalTitle);
+    modalHeader.appendChild(closeButton);
+
+    // Create the modal body element
+    const modalBody = document.createElement('div');
+    modalBody.classList.add('modal-body');
+
+    // Create the modal body content
+    const modalBodyContent = document.createElement('p');
+    modalBodyContent.textContent = 'You don`t have enough pizzas left and not enough money to buy new ones! Your only option is to display adds on your sites to get 10€ to buy another pizza!';
+
+    
+    // Append the modal body content to the modal body
+    modalBody.appendChild(modalBodyContent);
+
+    // Create the modal footer element
+    const modalFooter = document.createElement('div');
+    modalFooter.classList.add('modal-footer');
+
+    // Create the "Let's get started!" button
+    const startButton = document.createElement('button');
+    startButton.type = 'button';
+    startButton.classList.add('btn', 'btn-primary');
+    startButton.setAttribute('data-bs-dismiss', 'modal');
+    startButton.textContent = "Continue";
+
+    // Append the "Let's get started!" button to the modal footer
+    modalFooter.appendChild(startButton);
+
+    // Append the modal header, body, and footer to the modal content
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalContent.appendChild(modalFooter);
+
+    // Append the modal content to the modal dialog
+    modalDialog.appendChild(modalContent);
+
+    // Append the modal dialog to the modal
+    modal.appendChild(modalDialog);
+
+    // Append the modal to the body
+    document.body.appendChild(modal);
+
+    // Show the modal
+    $('#gameOverModal').modal('show');
+
 }
 
 
