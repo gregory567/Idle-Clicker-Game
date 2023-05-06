@@ -1,9 +1,10 @@
+//set new winCondition and show the instructions modal for this level
+winCondition= 150;
+showModalLevel2();
 
 // create DOM elements and append them to the html document
 // find the parent element with class "row" and id "second_row"
 const secondRowElement = document.getElementById("second_row");
-
-
 
 // create a new div with class "col-3"
 const newCol3 = document.createElement("div");
@@ -21,8 +22,6 @@ buyPizzaButton.classList.add("buy-button");
 buyPizzaButton.classList.add("button");
 buyPizzaButton.innerHTML = "Buy Frozen Pizza";
 level2Div.appendChild(buyPizzaButton);
-
-
 
 // create a new button to buy 10 pizzas
 const buyTenPizzasButton = document.createElement("button");
@@ -181,7 +180,6 @@ function createAutomat(){
     }
 
     if(curMoney < pizzaPrice && pizzaStorage == 0) {
-        //alert fehlt hier noch
         newCol3.appendChild(createAdField);
         gameOverModal();
     }
@@ -195,18 +193,21 @@ function GeneratePizza(){
         // decrease pizza storage by 1
         pizzaStorage--;
         pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
-  
+
         // increment the number of warmed up pizzas 
-      pizzasWarmedUp++;
-      // update the displayed number of prepared pizzas (visible for the user)
-      pizzaCounter.innerText = pizzasWarmedUp;
-      // increment the current funds
-      curMoney += pizzaValue;
-      // update the money counter variable (visible for the user)
-      moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+        pizzasWarmedUp++;
+        // update the displayed number of prepared pizzas (visible for the user)
+        pizzaCounter.innerText = pizzasWarmedUp;
+        // increment the current funds
+        curMoney += pizzaValue;
+        // update the money counter variable (visible for the user)
+        moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+        if (pizzasWarmedUp == winCondition) {
+            currentLevel++;
+            GetLevel();
+        }
     }
 }
-
 
 
 function toggleAutoBuyers()
@@ -230,8 +231,7 @@ function toggleAutoBuyers()
             autoBuyerActive=true;
             console.log("Turned autobuyers ON");
         }
-    }
-    
+    }   
 }
 
 
@@ -244,7 +244,6 @@ function updateAutoBuyerWindow()
     
     document.getElementById("max-pizza-count").innerHTML=maxAutoPizzas;
 }
-
 
 
 function createAutoBuyer()
@@ -335,13 +334,8 @@ function createABWindow()
                 {
                     BuyPizza();
                 }
-                
             }
         }
-        
-
-
-
     },autoBuyerDelay);
 
     abField.classList.add("button-container");
@@ -409,7 +403,7 @@ function gameOverModal() {
 
     // Create the modal body content
     const modalBodyContent = document.createElement('p');
-    modalBodyContent.textContent = 'You don`t have enough pizzas left and not enough money to buy new ones! Your only option is to display adds on your sites to get 10€ to buy another pizza!';
+    modalBodyContent.textContent = 'You don`t have enough pizzas left and not enough money to buy new ones! Your only option is to display ads on your sites to get 10€ to buy another pizza!';
 
     
     // Append the modal body content to the modal body
@@ -445,8 +439,101 @@ function gameOverModal() {
 
     // Show the modal
     $('#gameOverModal').modal('show');
-
 }
+
+
+function showModalLevel2() {
+
+     // Create the modal element
+     const modal = document.createElement('div');
+     modal.classList.add('modal', 'fade');
+     modal.id = 'level2Modal';
+     modal.tabIndex = '-1';
+     modal.role = 'dialog';
+     modal.setAttribute('aria-labelledby', 'level2Modal');
+     modal.setAttribute('aria-hidden', 'true');
+ 
+     // Create the modal dialog element
+     const modalDialog = document.createElement('div');
+     modalDialog.classList.add('modal-dialog', 'modal-dialog-centered');
+     modalDialog.role = 'document';
+ 
+     // Create the modal content element
+     const modalContent = document.createElement('div');
+     modalContent.classList.add('modal-content');
+ 
+     // Create the modal header element
+     const modalHeader = document.createElement('div');
+     modalHeader.classList.add('modal-header');
+ 
+     // Create the modal title element
+     const modalTitle = document.createElement('h5');
+     modalTitle.classList.add('modal-title');
+     modalTitle.id = 'level2Modal';
+     modalTitle.textContent = 'Congratulations, you have reached Level 2';
+ 
+     // Create the close button element
+     const closeButton = document.createElement('button');
+     closeButton.type = 'button';
+     closeButton.classList.add('close');
+     closeButton.setAttribute('data-bs-dismiss', 'modal');
+     closeButton.setAttribute('aria-label', 'Close');
+ 
+     // Create the close button icon
+     const closeButtonIcon = document.createElement('span');
+     closeButtonIcon.setAttribute('aria-hidden', 'true');
+     closeButtonIcon.innerHTML = '&times;';
+ 
+     // Append the close button icon to the close button
+     closeButton.appendChild(closeButtonIcon);
+ 
+     // Append the modal title and close button to the modal header
+     modalHeader.appendChild(modalTitle);
+     modalHeader.appendChild(closeButton);
+ 
+     // Create the modal body element
+     const modalBody = document.createElement('div');
+     modalBody.classList.add('modal-body');
+ 
+     // Create the modal body content
+     const modalBodyContent = document.createElement('p');
+     modalBodyContent.textContent = 'There are no Frozen Pizzas left! You now have to buy Frozen Pizzas. It is now possible to buy Pizza Machines, that automatically create Pizzas as long as you have Frozen Pizzas left. It is now possible to buy an AutoBuyer Machines, that automatically buys Pizza as long as you have sufficient funds. To reach level 3 you need a total of '+winCondition+' Pizzas sold';
+ 
+     
+     // Append the modal body content to the modal body
+     modalBody.appendChild(modalBodyContent);
+ 
+     // Create the modal footer element
+     const modalFooter = document.createElement('div');
+     modalFooter.classList.add('modal-footer');
+ 
+     // Create the "Let's get started!" button
+     const startButton = document.createElement('button');
+     startButton.type = 'button';
+     startButton.classList.add('btn', 'btn-primary');
+     startButton.setAttribute('data-bs-dismiss', 'modal');
+     startButton.textContent = "Continue";
+ 
+     // Append the "Let's get started!" button to the modal footer
+     modalFooter.appendChild(startButton);
+ 
+     // Append the modal header, body, and footer to the modal content
+     modalContent.appendChild(modalHeader);
+     modalContent.appendChild(modalBody);
+     modalContent.appendChild(modalFooter);
+ 
+     // Append the modal content to the modal dialog
+     modalDialog.appendChild(modalContent);
+ 
+     // Append the modal dialog to the modal
+     modal.appendChild(modalDialog);
+ 
+     // Append the modal to the body
+     document.body.appendChild(modal);
+ 
+     // Show the modal
+     $('#level2Modal').modal('show');
+ }
 
 
 

@@ -22,6 +22,9 @@ var plusCounter=0;
 var plusCounterDecreaseSpeed=75;
 var timeoutHandle;
 
+//wincondition (=total amount of pizzas sold) to to get to the next level
+var winCondition = 0;
+
 
 
 var autoBuyerDelay=1000;
@@ -59,6 +62,13 @@ function GetLevel(){
     level2ScriptTag.setAttribute("src", "./include js/level2.js");
     scriptContainer.appendChild(level2ScriptTag); 
     
+  } else if (currentLevel==3) {
+    // load the js script of level 3
+    const scriptContainer = document.getElementById("script-container");
+    const level3ScriptTag = document.createElement("script");
+    level3ScriptTag.setAttribute("src", "./include js/level3.js");
+    scriptContainer.appendChild(level3ScriptTag);
+
   }
   //If currentLevel = x, enable element on site
 }
@@ -82,6 +92,7 @@ function ReducePlusCounter(){
       
       // increment the number of warmed up pizzas 
       pizzasWarmedUp++;
+      
       // update the displayed number of prepared pizzas (visible for the user)
       pizzaCounter.innerText = pizzasWarmedUp;
       // increment the current funds
@@ -95,7 +106,12 @@ function ReducePlusCounter(){
           ReducePlusCounter();
         }, plusCounterDecreaseSpeed)
       }
-       
+      
+      if (pizzasWarmedUp == winCondition) {
+        currentLevel++;
+        GetLevel();
+      }
+
 }
 
 // function to start the ReducePlusCounter function with delay 
@@ -127,8 +143,6 @@ pizzaButton.addEventListener("click", function(){
 
     // when the initial pizza storage of 100 is used up
     } else if (currentLevel==1) {
-      // trigger alert (might have to change this to a better alternative later)
-      alert("You have no frozen pizzas left!");
       // step up to level 2 and call GetLevel function
       currentLevel++;
       GetLevel();
