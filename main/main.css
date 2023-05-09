@@ -29,6 +29,10 @@
   border: 5px solid gray;
 
 }
+.ad:hover {
+    cursor:pointer;
+    
+}
 
 .centerdiv {
     text-align:center;
