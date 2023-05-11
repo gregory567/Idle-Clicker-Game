@@ -11,8 +11,13 @@ const leftAd = document.getElementById("l_AD");
 // intialize essential variables 
 var pizzaStorage=50;
 let pizzasWarmedUp = 0;
+
+//sell price
 var pizzaValue=2.50;
+//pizzaValue =parseFloat(pizzaValue.toFixed(2));
+//buy price
 var pizzaPrice=1.50;
+//pizzaPrice =parseFloat(pizzaPrice.toFixed(2));
 
 var currentLevel=1; 
 var curMoney=0;

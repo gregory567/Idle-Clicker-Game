@@ -33,3 +33,9 @@ function setPizzaStorage(amount)
   pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
   console.log("Set frozen pizzas to " + amount);
 }
+
+function setPizzaPrice(amount) {
+  pizzaValue = amount;
+  pizzaValueText.innerText = "Pizza Price: €" + parseFloat(pizzaValue.toFixed(2));
+  console.log("Set pizza sell price to "+ amount);
+}
