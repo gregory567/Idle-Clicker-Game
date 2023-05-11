@@ -5,7 +5,6 @@ function setMoney(amount)
   curMoney=amount;
   moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
   console.log("Set money to "+amount);
-
 }
 
 function setTotalPizzas(amount)
