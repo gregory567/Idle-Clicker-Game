@@ -11,6 +11,8 @@
     align-items: center;
     border: 2px solid black;
     padding:10px;
+    margin-top: 25px;
+ 
 }
 .button:hover {
     transform:scale(1.02);
@@ -20,6 +22,7 @@
 .buy-button {
     display: inline-block;
 }
+
 .ad {
     position: absolute;
   top: 1%;
@@ -46,7 +49,6 @@
     background-color: lightgray;
 }
   
-
 #pizza-button {
     background-image: url('./pictures/pizza.jpg'); 
     background-size: cover;
@@ -58,7 +60,6 @@
     transform: scale(1.05);
     cursor:pointer;
 }
-
 
 /*text under pizza button*/
 #pizza-button-text {
@@ -75,6 +76,8 @@
     border: 2px solid black;
     padding-bottom: 15px;
 }
+
+
 
   
   

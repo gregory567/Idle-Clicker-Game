@@ -147,9 +147,7 @@ pizzaButton.addEventListener("click", function(){
     if (l2active==false)
     {
         addToLevelFunction();
-    }
-    
-    
+    } 
 });
 
 function addToLevelFunction (){
