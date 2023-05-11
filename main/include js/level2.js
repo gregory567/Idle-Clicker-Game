@@ -1,6 +1,7 @@
 //set new winCondition and show the instructions modal for this level
 winCondition = 150;
 showModalLevel2();
+console.log("You reached level 2!");
 
 // create DOM elements and append them to the html document
 // find the parent element with class "row" and id "second_row"

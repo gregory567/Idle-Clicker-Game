@@ -1,22 +1,23 @@
+
 //Developer console comma 
 //Funcions to set values for testing ("cheating")
 function setMoney(amount)
 {
-  curMoney=amount;
+  curMoney = amount;
   moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
-  console.log("Set money to "+amount);
+  console.log("Set money to " + amount);
 }
 
 function setTotalPizzas(amount)
 {
-  pizzasWarmedUp=amount;
+  pizzasWarmedUp = amount;
   pizzaCounter.innerText = pizzasWarmedUp;
-  console.log("Set total pizzas to "+amount);
+  console.log("Set total pizzas to " + amount);
 }
 
 function setLevel(num)
 {
-  currentLevel=num;
+  currentLevel = num;
   GetLevel();
 }
 
@@ -25,11 +26,10 @@ function enableAdField()
     newCol3.appendChild(createAdField);
 }
 
-
 function setPizzaStorage(amount) 
 {
-  pizzaStorage=amount;
-  pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
+  pizzaStorage = amount;
+  pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage;
   console.log("Set frozen pizzas to " + amount);
 }
 

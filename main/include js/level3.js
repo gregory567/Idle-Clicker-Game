@@ -1,13 +1,15 @@
 //set new winCondition and show the instructions modal for this level
 winCondition = 200;
-console.log("You reached level 3");
 showModalLevel3();
+console.log("You reached level 3!");
 
+//we want to place elements into the container of the original pizza, therefore we need to select it
 const pizzaButtonContainer = document.getElementById("pizza-button-container");
+//set the starting value for the public demand
 var pizzaDemand = 100;
 
 
-//include level 3 javascript components as soon as level 3 is reached by the player:
+//include level 3 javascript components as soon as the player reaches level 3:
 
 //include pizzaPrice Component
 var pizzaPriceComponent = document.createElement('script');
@@ -22,7 +24,7 @@ var advertisingComponent = document.createElement('script');
 advertisingComponent.setAttribute("src", "./include js/level3Components/advertisingComponent.js");
 scriptContainer.appendChild(advertisingComponent);
 
-
+//function for showing the instructions modal of level 3
 function showModalLevel3() {
 
     // Create the modal element
