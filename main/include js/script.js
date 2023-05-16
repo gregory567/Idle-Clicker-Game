@@ -63,14 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
 // this function prints the current level to the console and includes the script-file of level 2
 function GetLevel(){
   console.log("Current level: " + currentLevel);
-  if (currentLevel==2){
+  if (currentLevel>=2){
     // load the js script of level 2
    
     const level2ScriptTag = document.createElement("script");
     level2ScriptTag.setAttribute("src", "./include js/level2.js");
     scriptContainer.appendChild(level2ScriptTag); 
     
-  } else if (currentLevel==3) {
+  }
+  if (currentLevel>=3) {
     // load the js script of level 3
     const level3ScriptTag = document.createElement("script");
     level3ScriptTag.setAttribute("src", "./include js/level3.js");
