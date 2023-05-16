@@ -26,11 +26,14 @@
 .ad {
     position: absolute;
   top: 1%;
-  left: 1%;
-  width: 13%;
+  left: 0%;
+  width: 15%;
   height: 75%;
   border: 5px solid gray;
 
+}
+.ad:hover {
+    cursor:pointer
 }
 
 .centerdiv {
