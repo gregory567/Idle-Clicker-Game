@@ -8,11 +8,19 @@ const dayCounter = document.getElementById("day-count");
 const Clock = document.getElementById("clock");
 const leftAd = document.getElementById("l_AD");
 
+//container where the level scripts get loaded into
+const scriptContainer = document.getElementById("script-container");
+
 // intialize essential variables 
 var pizzaStorage = 50;
 let pizzasWarmedUp = 0;
-var pizzaValue = 2.50;
-var pizzaPrice = 1.50;
+
+//sell price
+var pizzaValue=2.50;
+//pizzaValue =parseFloat(pizzaValue.toFixed(2));
+//buy price
+var pizzaPrice=1.50;
+//pizzaPrice =parseFloat(pizzaPrice.toFixed(2));
 
 var currentLevel = 1; 
 var curMoney = 0;
@@ -54,16 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
 // this function prints the current level to the console and includes the script-file of the next level
 function GetLevel(){
   console.log("Current level: " + currentLevel);
-  if (currentLevel==2){
+  if (currentLevel>=2){
     // load the js script of level 2
-    const scriptContainer = document.getElementById("script-container");
+   
     const level2ScriptTag = document.createElement("script");
     level2ScriptTag.setAttribute("src", "./include js/level2.js");
-    scriptContainer.appendChild(level2ScriptTag); 
-
-  } else if (currentLevel==3) {
+    scriptContainer.appendChild(level2ScriptTag);   
+  }
+  if (currentLevel>=3) {
     // load the js script of level 3
-    const scriptContainer = document.getElementById("script-container");
     const level3ScriptTag = document.createElement("script");
     level3ScriptTag.setAttribute("src", "./include js/level3.js");
     scriptContainer.appendChild(level3ScriptTag);

@@ -11,7 +11,9 @@
     align-items: center;
     border: 2px solid black;
     padding:10px;
+    margin-top: 25px;
 }
+
 .button:hover {
     transform:scale(1.02);
     background-color: antiquewhite;
@@ -20,37 +22,36 @@
 .buy-button {
     display: inline-block;
 }
+
 .ad {
     position: absolute;
   top: 1%;
-  left: 1%;
-  width: 13%;
+  left: 0%;
+  width: 15%;
   height: 75%;
   border: 5px solid gray;
 
 }
 .ad:hover {
-    cursor:pointer;
-    
+    cursor:pointer
 }
 
 .centerdiv {
     text-align:center;
 }
 
-
 .ab-on {
     color:green;
     border:1px solid black;
     background-color: rgb(241, 241, 241);
 }
+
 .ab-off {
     color:red;
     border:1px solid black;
     background-color: lightgray;
 }
   
-
 #pizza-button {
     background-image: url('./pictures/pizza.jpg'); 
     background-size: cover;
@@ -58,11 +59,11 @@
     height: 200px;
     transition: .1s ease-in-out 0s;
 }
+
 #pizza-button:hover {
     transform: scale(1.05);
     cursor:pointer;
 }
-
 
 /*text under pizza button*/
 #pizza-button-text {
@@ -71,6 +72,7 @@
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(0, 140, 69);
 }
+
 .pizza-plus-counter {
     color: green;
 }
@@ -79,6 +81,8 @@
     border: 2px solid black;
     padding-bottom: 15px;
 }
+
+
 
   
   
