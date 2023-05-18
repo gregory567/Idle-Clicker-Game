@@ -10,7 +10,7 @@ advertisementDiv.classList.add("button-container");
 
 // create a new button to distribute flyers
 const flyerButton = document.createElement("button");
-flyerButton.addEventListener("click", setDemand(20)); //flyers give a 20% boost of the current demand 
+flyerButton.setAttribute("onclick", "setDemand(25)"); //flyers give a 25% boost of the current demand 
 flyerButton.innerHTML = "Distribute Flyers";
 
 //initial cost of distributing flyers is 100 (increases exponentially with each purchase/click)
@@ -25,7 +25,7 @@ advertisementDiv.appendChild(flyerButton);
 
 // create a new button to start a poster campaign
 const posterButton = document.createElement("button");
-posterButton.addEventListener("click", setDemand(10)); //posters give a 10% boost of the current demand 
+posterButton.setAttribute("onclick", "setDemand(10)"); //posters give a 10% boost of the current demand 
 posterButton.innerHTML = "Poster Campaign";
 
 //initial cost of starting a poster campaign is 100 (increases exponentially with each purchase/click)
@@ -43,6 +43,6 @@ document.getElementById("third_row").appendChild(advertisementCol3);
 
 
 function setDemand(boostPercentage) {
-    let increaseDemand = parseInt(pizzaDemand/100 * boostPercentage);
-    increasePizzaDemand(increaseDemand);    
+    let increasedDemand = parseInt(pizzaDemand * (1+(boostPercentage/100)));
+    setPizzaDemand(increasedDemand);
 }
