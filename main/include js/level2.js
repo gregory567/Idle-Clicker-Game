@@ -138,7 +138,7 @@ pizzaButton.addEventListener("click", function(){
     pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
     if (l2active==false)
     {
-        addToLevelFunction();
+        addAutomats();
     } 
 });
 
