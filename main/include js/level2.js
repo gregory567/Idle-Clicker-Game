@@ -1,7 +1,10 @@
 //set new winCondition and show the instructions modal for this level
 winCondition = 150;
-showModalLevel2();
-console.log("You reached level 2!");
+
+// if the pizza button is clicked, display the new (decreased) number of pizzas in storage 
+pizzaButton.addEventListener("click", function(){
+    pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
+});
 
 // create DOM elements and append them to the html document
 // find the parent element with class "row" and id "second_row"
@@ -128,19 +131,15 @@ const currentAutomatPrice = document.createElement("p");
 currentAutomatPrice.innerHTML = "Current Price of Pizza Automat: €" + automatPrice + "<br>";
 level2Divb.appendChild(currentAutomatPrice);
 
-
-
 // this is an auxiliary variable to check if level 2 is already active
 var l2active = false;
 
-// if the pizza button is clicked, display the new (decreased) number of pizzas in storage 
-pizzaButton.addEventListener("click", function(){
-    pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
-    if (l2active==false)
-    {
-        addAutomats();
-    } 
-});
+// if level2 is not active yet, we will addAutomats() and showModalLevel2() --> then we set l2active to true
+if (l2active==false) {
+    addAutomats();
+    showModalLevel2();
+    console.log("You reached level 2!");
+}
 
 // display the pizza automat, and the autobuyer immediately when reaching level 2
 function addAutomats (){
