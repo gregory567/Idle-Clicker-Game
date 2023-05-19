@@ -18,7 +18,7 @@ var eventActive=false; //Event can only be triggered if no event is active
 
 var currentEvent=null;
 
-
+//IMPORTANT: When adding a new event, make sure you also add it to the event list further below or else it cannot be randomly picked!
 
 
 class RandomEvent {
@@ -69,8 +69,8 @@ function StopEvent() {
 
 
 
-class PizzaSaleEvent extends RandomEvent {
-    onEventEnd() {
+class PizzaSaleEvent extends RandomEvent { //Create new subclass for event
+    onEventEnd() { //Override the event trigger and end functions
         pizzaPrice=1.50;
         pizzaPriceContainer.innerHTML = "Current Price: €" + parseFloat(pizzaPrice).toFixed(2) + "<br>";
         super.onEventEnd();
@@ -81,9 +81,9 @@ class PizzaSaleEvent extends RandomEvent {
         super.triggerEvent();
     }
 }
-const pizzaSale = new PizzaSaleEvent("Massive Sale",80000);
-pizzaSale.setDescription("Frozen pizzas are half price for a limited time!");
-function TriggerPizzaSale() {
+const pizzaSale = new PizzaSaleEvent("Massive Sale",80000); //Create event object
+pizzaSale.setDescription("Frozen pizzas are half price for a limited time!"); //Set description
+function TriggerPizzaSale() { //Create trigger function
     pizzaSale.triggerEvent();
 }
 
@@ -144,7 +144,7 @@ function TriggerPO() {
 
 
 
-
+//Pool of events that can be picked from
 const eventFunctionsList = [TriggerFestival,TriggerInflation,TriggerPO,TriggerPizzaSale];
 
 eInterval = setInterval(function() {
@@ -154,18 +154,18 @@ eInterval = setInterval(function() {
         var chance = Math.floor(Math.random()*100);
         if (chance <= eventChance * eventPityChance)
         {
-            var x = Math.floor(Math.random()*eventFunctionsList.length-1)
-            let result = eventFunctionsList[x]();
+            var x = Math.floor(Math.random()*eventFunctionsList.length-1) //Pick random event
+            let result = eventFunctionsList[x](); //Trigger event
         }
         else 
         {
-        eventPityChance+=0.35;
+        eventPityChance+=0.35; //Chance of getting an event increases slightly every time you do not get one
         }
     }
     
 },eventInterval)
 
-function SetEventInterval(num) {
+function SetEventInterval(num) { //Use this function for testing
     eventInterval=num*1000;
     clearInterval(eInterval);
 
