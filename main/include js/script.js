@@ -15,6 +15,9 @@ const scriptContainer = document.getElementById("script-container");
 var pizzaStorage = 50;
 let pizzasWarmedUp = 0;
 
+// //set default number of orders within a game-hour (is needed for level3 onwards)
+var pizzaOrders = 10;
+
 //sell price
 var pizzaValue=2.50;
 //pizzaValue =parseFloat(pizzaValue.toFixed(2));
@@ -119,6 +122,37 @@ function startCounter(){
   }, 1500)
 }
 
+
+function pizzaButtonOnClick () {
+    // as long as the initial pizza storage of 50 is not used up
+    if (pizzaStorage > 0){
+      // decrease pizza storage by 1
+      pizzaStorage--;
+
+      // decrease the size of the pizzabutton momentarily when its clicked 
+      pizzaButton.style.transform = "scale(0.9)";
+      // increment plus counter and display it
+      plusCounter++;
+      pizzaPlusCounter.innerText = "+" + plusCounter;
+      clearTimeout(timeoutHandle); // reset "+1" counter timeout on click
+      // start ReducePlusCounter with timeout 
+      startCounter();
+      // increase the size of the pizza button above its normal size momentarily 
+      setTimeout(function() {
+          pizzaButton.style.transform = "scale(1.05)";
+      }, 50);
+
+    // when the initial pizza storage of 50 is used up
+    } else if (currentLevel==1) {
+      // step up to level 2 and call GetLevel function
+      currentLevel++;
+      GetLevel();
+    }
+}
+
+pizzaButton.setAttribute("onclick", "pizzaButtonOnClick()");
+
+/*
 // anonymous function which determines what will happen if the pizza button is clicked
 pizzaButton.addEventListener("click", function(){
     // as long as the initial pizza storage of 50 is not used up
@@ -147,7 +181,7 @@ pizzaButton.addEventListener("click", function(){
     }
     
 });
-
+*/
 // mouseover effect for pizzabutton
 pizzaButton.onmouseover = function(){
   pizzaButton.style.transform = "scale(1.05)";

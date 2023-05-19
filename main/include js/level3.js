@@ -7,8 +7,6 @@ console.log("You reached level 3!");
 const pizzaButtonContainer = document.getElementById("pizza-button-container");
 //set the starting value for the public demand
 var pizzaDemand = 100;
-//set default number of orders within a game-hour
-var pizzaOrders = 10;
 
 
 //include level 3 javascript components as soon as the player reaches level 3:
