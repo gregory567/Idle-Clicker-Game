@@ -84,9 +84,5 @@ pizzaButtonOnClick = function () {
       }, 50);
 
     // when the initial pizza storage of 50 is used up
-    } else if (currentLevel==1) {
-      // step up to level 2 and call GetLevel function
-      currentLevel++;
-      GetLevel();
     }
 };
