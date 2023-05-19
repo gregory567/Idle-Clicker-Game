@@ -78,12 +78,14 @@ function increaseDemandTemporary(demandIncrease) {
     //this is the temporary demand increase that has to be decreased after a set period of time
     tempIncrease = newTempDemand - pizzaDemand;
     setPizzaDemand(newTempDemand);
-    decreaseDemand(tempIncrease); 
+    decreaseDemand(tempIncrease);
+    flyerButton.disabled = true; 
 }
 
 function decreaseDemand(decrease) {
     setTimeout(function() {
         pizzaDemand -= decrease;
-        setPizzaDemand(pizzaDemand);        
+        setPizzaDemand(pizzaDemand);
+        flyerButton.disabled = false;       
     }, 10000)
 }
