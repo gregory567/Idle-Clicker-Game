@@ -89,3 +89,8 @@ function decreaseDemand(decrease) {
         flyerButton.disabled = false;       
     }, 10000)
 }
+
+function decreaseDemandInstant(decrease) {
+    pizzaDemand -= decrease;
+        setPizzaDemand(pizzaDemand);
+}

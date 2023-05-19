@@ -39,7 +39,7 @@ function updatePizzaOrdersValue() {
 // overwriting the GeneratePizza-function --> because we now need to consider pizzaOrders too
 GeneratePizza = function(){
     // as long as the pizza storage is not used up
-    if (pizzaStorage > 0 && pizzaOrders > 0){
+    if (pizzaStorage > 0 && pizzaOrders > 0 && autoOn){
         // decrease pizza storage by 1
         pizzaStorage--;
         // decrement the number of pizzaOrders

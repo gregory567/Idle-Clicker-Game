@@ -1,6 +1,9 @@
 //set new winCondition and show the instructions modal for this level
 winCondition = 150;
 
+//For power outage event
+var autoOn = true;
+
 // if the pizza button is clicked, display the new (decreased) number of pizzas in storage 
 pizzaButton.addEventListener("click", function(){
     pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
@@ -183,8 +186,11 @@ function createAutomat(){
 
 // generates 1 pizza automatically every second
 function GeneratePizza(){
-    // as long as the pizza storage is not used up
-    if (pizzaStorage > 0){
+
+    if (autoOn)
+    {
+        // as long as the pizza storage is not used up
+        if (pizzaStorage > 0){
         // decrease pizza storage by 1
         pizzaStorage--;
         pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage;
@@ -200,8 +206,11 @@ function GeneratePizza(){
         if (pizzasWarmedUp == winCondition) {
             currentLevel++;
             GetLevel();
+            }
         }
     }
+
+    
 }
 
 
@@ -318,7 +327,7 @@ function createAutoBuyerWindow()
 
     setInterval(function() {
 
-        if (autoBuyerAmount > 0 && autoBuyerActive == true){
+        if (autoBuyerAmount > 0 && autoBuyerActive == true && autoOn==true){
 
             for (let i = 0; i < autoBuyerAmount; i++){
                 
