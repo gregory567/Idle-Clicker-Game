@@ -51,7 +51,7 @@ function increasePosterPrice() {
         posterPrice = posterPrice*1.5;
         posterPrice = Math.round(posterPrice*100)/100;
         posterText.innerHTML = "Cost: " + posterPrice;
-        setDemand(10); //posters give a 10% boost of the current demand 
+        increaseDemand(10); //posters give a 10% boost of the current demand 
     }
 }
 
@@ -63,12 +63,27 @@ function increaseFlyerPrice() {
 
         flyerPrice = flyerPrice*1.5;
         flyerPrice = Math.round(flyerPrice*100)/100;
-        flyerText.innerHTML = "Cost: " + flyerPrice;
-        setDemand(25); //flyers give a 25% boost of the current demand
+        flyerText.innerHTML = "Cost: " + flyerPrice;      
+        increaseDemandTemporary(25); //flyers give a temporary 25% boost of the current demand
     }
 }
 
-function setDemand(boostPercentage) {
+function increaseDemand(boostPercentage) {
     let increasedDemand = parseInt(pizzaDemand * (1+(boostPercentage/100)));
     setPizzaDemand(increasedDemand);
+}
+
+function increaseDemandTemporary(demandIncrease) {
+    let newTempDemand = parseInt(pizzaDemand * (1+(demandIncrease/100)));
+    //this is the temporary demand increase that has to be decreased after a set period of time
+    tempIncrease = newTempDemand - pizzaDemand;
+    setPizzaDemand(newTempDemand);
+    decreaseDemand(tempIncrease); 
+}
+
+function decreaseDemand(decrease) {
+    setTimeout(function() {
+        pizzaDemand -= decrease;
+        setPizzaDemand(pizzaDemand);        
+    }, 10000)
 }
