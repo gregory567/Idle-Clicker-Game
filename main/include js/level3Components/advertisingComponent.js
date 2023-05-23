@@ -78,19 +78,18 @@ function increaseDemandTemporary(demandIncrease) {
     //this is the temporary demand increase that has to be decreased after a set period of time
     tempIncrease = newTempDemand - pizzaDemand;
     setPizzaDemand(newTempDemand);
-    decreaseDemand(tempIncrease);
+    decreaseDemand(demandIncrease);
     flyerButton.disabled = true; 
 }
 
 function decreaseDemand(decrease) {
     setTimeout(function() {
         if(decrease < 0) {
-            pizzaDemand *= 1 + ((decrease-5)/100); // to reset to same value as before
+            setPizzaDemand(pizzaDemand * (1 + ((decrease-5)/100))); // to reset to same value as before
         }
         else {
-            pizzaDemand *= 1 - ((decrease-5)/100); // sam to above
+            setPizzaDemand(pizzaDemand * (1 - ((decrease-5)/100))); // same to above
         }
-        setPizzaDemand(pizzaDemand);
         flyerButton.disabled = false;       
     }, 10000)
 }
