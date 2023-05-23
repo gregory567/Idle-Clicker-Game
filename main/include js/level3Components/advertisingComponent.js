@@ -84,7 +84,12 @@ function increaseDemandTemporary(demandIncrease) {
 
 function decreaseDemand(decrease) {
     setTimeout(function() {
-        pizzaDemand -= decrease;
+        if(decrease < 0) {
+            pizzaDemand *= 1 + ((decrease-5)/100); // to reset to same value as before
+        }
+        else {
+            pizzaDemand *= 1 - ((decrease-5)/100); // sam to above
+        }
         setPizzaDemand(pizzaDemand);
         flyerButton.disabled = false;       
     }, 10000)
