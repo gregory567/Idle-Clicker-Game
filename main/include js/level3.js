@@ -1,6 +1,7 @@
 //set new winCondition and show the instructions modal for this level
 winCondition = 500;
 showModalLevel3();
+l3active = true;
 console.log("You reached level 3!");
 
 //we want to place elements into the container of the original pizza, therefore we need to select it

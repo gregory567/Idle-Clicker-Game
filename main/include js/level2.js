@@ -136,6 +136,8 @@ level2Divb.appendChild(currentAutomatPrice);
 
 // this is an auxiliary variable to check if level 2 is already active
 var l2active = false;
+// this is an auxiliary variable to check if level 3 is active
+var l3active = false;
 
 // if level2 is not active yet, we will addAutomats() and showModalLevel2() --> then we set l2active to true
 if (l2active==false) {
@@ -187,12 +189,14 @@ function createAutomat(){
 // generates 1 pizza automatically every second
 function GeneratePizza(){
 
-    if (autoOn)
-    {
-        // as long as the pizza storage is not used up
-        if (pizzaStorage > 0){
+    // as long as the pizza storage is not used up
+    if (autoOn && (pizzaStorage > 0) && (pizzaOrders > 0)){
         // decrease pizza storage by 1
         pizzaStorage--;
+        // decrement the number of pizzaOrders, when level 3 is active
+        if(l3active) {
+            pizzaOrders--;
+        }
         pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage;
 
         // increment the number of warmed up pizzas 
@@ -206,11 +210,8 @@ function GeneratePizza(){
         if (pizzasWarmedUp == winCondition) {
             currentLevel++;
             GetLevel();
-            }
         }
     }
-
-    
 }
 
 

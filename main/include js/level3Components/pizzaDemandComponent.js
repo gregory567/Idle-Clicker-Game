@@ -36,30 +36,6 @@ function updatePizzaOrdersValue() {
     let newOrders = Math.round(21 * Math.pow(0.8, pizzaValue) * pizzaDemand/100);
     pizzaOrders += newOrders;
 }
-// overwriting the GeneratePizza-function --> because we now need to consider pizzaOrders too
-GeneratePizza = function(){
-    // as long as the pizza storage is not used up
-    if ((pizzaStorage > 0) && (pizzaOrders > 0)){
-        // decrease pizza storage by 1
-        pizzaStorage--;
-        // decrement the number of pizzaOrders
-        pizzaOrders--;
-        pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage;
-
-        // increment the number of warmed up pizzas 
-        pizzasWarmedUp++;
-        // update the displayed number of prepared pizzas (visible for the user)
-        pizzaCounter.innerText = pizzasWarmedUp;
-        // increment the current funds
-        curMoney += pizzaValue;
-        // update the money counter variable (visible for the user)
-        moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
-        if (pizzasWarmedUp == winCondition) {
-            currentLevel++;
-            GetLevel();
-        }
-    }
-};
 
 //overwrite pizzaButtonOnClick function to take pizzaOrders into account
 pizzaButtonOnClick = function () {
