@@ -35,6 +35,18 @@ setInterval(function() {
 function updatePizzaOrdersValue() {
     let newOrders = Math.round(21 * Math.pow(0.8, pizzaValue) * pizzaDemand/100);
     pizzaOrders += newOrders;
+    for (var i = 0; i < newOrders; i++)
+    {
+        pizzaOrderList.push(pizzaValue); //Add order to list
+    }
+}
+
+function printPizzaOrderList()
+{
+    for (var i = 0; i < pizzaOrderList.length;i++)
+    {
+        console.log("Order " + i + " price: " + pizzaOrderList[i]);
+    }
 }
 
 //overwrite pizzaButtonOnClick function to take pizzaOrders into account

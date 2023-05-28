@@ -17,6 +17,7 @@ let pizzasWarmedUp = 0;
 
 // //set default number of orders within a game-hour (is needed for level3 onwards)
 var pizzaOrders = 10;
+var pizzaOrderList=[]; //Save price of pizza at time of order in this list
 
 //sell price
 var pizzaValue=2.50;
@@ -97,7 +98,18 @@ function ReducePlusCounter(){
       // update the displayed number of prepared pizzas (visible for the user)
       pizzaCounter.innerText = pizzasWarmedUp;
       // increment the current funds
-      curMoney += pizzaValue;
+
+      if (currentLevel < 3)
+      {
+        curMoney += pizzaValue;
+      }
+      else
+      {
+        if (pizzaOrders>0)
+        { curMoney += pizzaOrderList.shift(); }
+        
+      }
+      
       // update the money counter variable (visible for the user)
       moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
