@@ -15,10 +15,10 @@ function setTotalPizzas(amount)
   console.log("Set total pizzas to " + amount);
 }
 
-function setLevel(num)
-{
-  currentLevel = num;
-  GetLevel();
+function setLevel(num) {
+  for (; currentLevel <= num; currentLevel++) {
+    GetLevel();
+  }
 }
 
 function enableAdField()

@@ -1,7 +1,13 @@
 //set new winCondition and show the instructions modal for this level
 winCondition = 150;
-showModalLevel2();
-console.log("You reached level 2!");
+
+//For power outage event
+var autoOn = true;
+
+// if the pizza button is clicked, display the new (decreased) number of pizzas in storage 
+pizzaButton.addEventListener("click", function(){
+    pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
+});
 
 // create DOM elements and append them to the html document
 // find the parent element with class "row" and id "second_row"
@@ -128,19 +134,17 @@ const currentAutomatPrice = document.createElement("p");
 currentAutomatPrice.innerHTML = "Current Price of Pizza Automat: €" + automatPrice + "<br>";
 level2Divb.appendChild(currentAutomatPrice);
 
-
-
 // this is an auxiliary variable to check if level 2 is already active
 var l2active = false;
+// this is an auxiliary variable to check if level 3 is active
+var l3active = false;
 
-// if the pizza button is clicked, display the new (decreased) number of pizzas in storage 
-pizzaButton.addEventListener("click", function(){
-    pizzaStorageContainer.innerHTML="Frozen Pizzas: " + pizzaStorage;
-    if (l2active==false)
-    {
-        addToLevelFunction();
-    } 
-});
+// if level2 is not active yet, we will addAutomats() and showModalLevel2() --> then we set l2active to true
+if (l2active==false) {
+    addAutomats();
+    showModalLevel2();
+    console.log("You reached level 2!");
+}
 
 // display the pizza automat, and the autobuyer immediately when reaching level 2
 function addAutomats (){
@@ -184,10 +188,15 @@ function createAutomat(){
 
 // generates 1 pizza automatically every second
 function GeneratePizza(){
+
     // as long as the pizza storage is not used up
-    if (pizzaStorage > 0){
+    if (autoOn && (pizzaStorage > 0) && (pizzaOrders > 0)){
         // decrease pizza storage by 1
         pizzaStorage--;
+        // decrement the number of pizzaOrders, when level 3 is active
+        if(l3active) {
+            pizzaOrders--;
+        }
         pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage;
 
         // increment the number of warmed up pizzas 
@@ -319,7 +328,7 @@ function createAutoBuyerWindow()
 
     setInterval(function() {
 
-        if (autoBuyerAmount > 0 && autoBuyerActive == true){
+        if (autoBuyerAmount > 0 && autoBuyerActive == true && autoOn==true){
 
             for (let i = 0; i < autoBuyerAmount; i++){
                 

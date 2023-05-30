@@ -15,6 +15,10 @@ const scriptContainer = document.getElementById("script-container");
 var pizzaStorage = 50;
 let pizzasWarmedUp = 0;
 
+// //set default number of orders within a game-hour (is needed for level3 onwards)
+var pizzaOrders = 10;
+var pizzaOrderList=[]; //Save price of pizza at time of order in this list
+
 //sell price
 var pizzaValue=2.50;
 //pizzaValue =parseFloat(pizzaValue.toFixed(2));
@@ -62,21 +66,18 @@ document.addEventListener("DOMContentLoaded", () => {
 // this function prints the current level to the console and includes the script-file of the next level
 function GetLevel(){
   console.log("Current level: " + currentLevel);
-  if (currentLevel>=2){
+  if (currentLevel==2){
     // load the js script of level 2
-   
     const level2ScriptTag = document.createElement("script");
     level2ScriptTag.setAttribute("src", "./include js/level2.js");
     scriptContainer.appendChild(level2ScriptTag);   
-  }
-  if (currentLevel>=3) {
+  } else if (currentLevel==3) {
     // load the js script of level 3
     const level3ScriptTag = document.createElement("script");
     level3ScriptTag.setAttribute("src", "./include js/level3.js");
     scriptContainer.appendChild(level3ScriptTag);
 
   }
-
 }
 
 
@@ -97,7 +98,18 @@ function ReducePlusCounter(){
       // update the displayed number of prepared pizzas (visible for the user)
       pizzaCounter.innerText = pizzasWarmedUp;
       // increment the current funds
-      curMoney += pizzaValue;
+
+      if (currentLevel < 3)
+      {
+        curMoney += pizzaValue;
+      }
+      else
+      {
+        if (pizzaOrders>0)
+        { curMoney += pizzaOrderList.shift(); }
+        
+      }
+      
       // update the money counter variable (visible for the user)
       moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
@@ -122,8 +134,8 @@ function startCounter(){
   }, 1500)
 }
 
-// anonymous function which determines what will happen if the pizza button is clicked
-pizzaButton.addEventListener("click", function(){
+
+function pizzaButtonOnClick () {
     // as long as the initial pizza storage of 50 is not used up
     if (pizzaStorage > 0){
       // decrease pizza storage by 1
@@ -148,8 +160,9 @@ pizzaButton.addEventListener("click", function(){
       currentLevel++;
       GetLevel();
     }
-    
-});
+}
+
+pizzaButton.setAttribute("onclick", "pizzaButtonOnClick()");
 
 // mouseover effect for pizzabutton
 pizzaButton.onmouseover = function(){

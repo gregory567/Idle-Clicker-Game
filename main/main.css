@@ -39,6 +39,22 @@
 .centerdiv {
     text-align:center;
 }
+.eventBar
+{
+    margin:auto;
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
+    text-align:center;
+    background-color: rgb(255, 162, 41);
+    border: 2px solid purple;
+    border-radius:5px;
+    max-width:fit-content;
+    font-style:italic;
+    color:white;
+    text-shadow: 0 0 3px orange, 0 0 5px orange;
+    
+}
 
 .ab-on {
     color:green;

@@ -27,22 +27,22 @@ function updatePizzaValueText() {
   
 //onclick function for increasing the selling price of one pizza 
 function increasePizzaValue() {
-    pizzaValue += 0.01;
+    pizzaValue += 0.1;
     updatePizzaValueText();
     //we need to enable the decrease button (for the case when the price is increased from 1 to 1.01)
     decreasePriceButton.disabled = false;
     //a price increase has a negative effect on the public demand
-    decreasePizzaDemand(1);
+    setPizzaDemand(pizzaDemand * 0.99);
 }
 
 //onclick function that decreases the pizza selling price by 1 cent as long as the price is >1 and disables the decrease button if the selling price is 1
 function decreasePizzaValue() {
-    //if pizza selling price is greater 1 decrease by 1 cent
+    //if pizza selling price is greater 1 decrease by 10 cent
     if (pizzaValue > 1) {
-        pizzaValue -= 0.01;
+        pizzaValue -= 0.1;
         updatePizzaValueText();
         //a price decrease has a positive effect on the public demand
-        increasePizzaDemand(1);
+        setPizzaDemand(pizzaDemand * 1.01);
         //if pizza value is now 1, disable the decrease button
         if (pizzaValue <= 1) {
             decreasePriceButton.disabled = true;
