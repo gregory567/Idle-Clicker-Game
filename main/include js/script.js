@@ -11,6 +11,9 @@ const leftAd = document.getElementById("l_AD");
 //container where the level scripts get loaded into
 const scriptContainer = document.getElementById("script-container");
 
+// global variable to store the player's name for the highscore list
+var playerName;
+
 // intialize essential variables 
 var pizzaStorage = 50;
 let pizzasWarmedUp = 0;
@@ -61,6 +64,12 @@ $(document).ready(function() {
 // print to the console on page load 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Loaded game!"); 
+
+  // ask the player to enter his name
+  playerName = prompt("Enter your name:");
+
+  // Example: Display a welcome message with the player's name
+  console.log("Welcome, " + playerName + "! Let's start the game.");
 });
 
 // this function prints the current level to the console and includes the script-file of the next level
