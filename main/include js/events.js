@@ -1,6 +1,6 @@
 $(document).ready(function() {
     console.log("Events loaded!");
-  });
+});
 
 
 const eventBar = document.createElement("div");
@@ -55,9 +55,6 @@ class RandomEvent {
             this.onEventEnd();
         },this.duration)
     }
-    
-    
-
 }
 
 function StopEvent() {
@@ -86,6 +83,8 @@ pizzaSale.setDescription("Frozen pizzas are half price for a limited time!"); //
 function TriggerPizzaSale() { //Create trigger function
     pizzaSale.triggerEvent();
 }
+
+
 
 class InflationEvent extends RandomEvent {
     onEventEnd() {
@@ -122,6 +121,8 @@ festival.setDescription("The Pizza Festival is taking place! Demand is massively
 function TriggerFestival() {
     festival.triggerEvent();
 }
+
+
 
 class PowerEvent extends RandomEvent {
     onEventEnd() {
@@ -162,7 +163,6 @@ eInterval = setInterval(function() {
         eventPityChance+=0.35; //Chance of getting an event increases slightly every time you do not get one
         }
     }
-    
 },eventInterval)
 
 function SetEventInterval(num) { //Use this function for testing
@@ -183,8 +183,6 @@ function SetEventInterval(num) { //Use this function for testing
             {
             eventPityChance+=0.35;
             }
-        }
-        
+        }  
     },eventInterval)
-    
 }
