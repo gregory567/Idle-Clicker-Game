@@ -6,13 +6,19 @@ console.log("You reached level 4!");
 
 //include event Component
 var eventComponent = document.createElement('script');
-eventComponent.setAttribute("src", "./include js/level4Components/events.js");
+eventComponent.setAttribute("src", "./include js/level4Components/eventComponent.js");
 scriptContainer.appendChild(eventComponent);
 
 
+//include highscore Component
+var highscoreComponent = document.createElement('script');
+highscoreComponent.setAttribute("src", "./include js/level4Components/highscoreComponent.js");
+scriptContainer.appendChild(highscoreComponent);
 
 
-//function for showing the instructions modal of level 3
+
+
+//function for showing the instructions modal of level 4
 function showModalLevel4() {
 
     // Create the modal element
