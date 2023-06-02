@@ -1,41 +1,27 @@
-//set new winCondition and show the instructions modal for this level
-winCondition = 500;
-showModalLevel3();
-l3active = true;
-console.log("You reached level 3!");
+//win condition for this level is to be nuber 1 on the highscore board
 
-//we want to place elements into the container of the original pizza, therefore we need to select it
-const pizzaButtonContainer = document.getElementById("pizza-button-container");
-//set the starting value for the public demand
-var pizzaDemand = 100;
+showModalLevel4();
+console.log("You reached level 4!");
 
 
-//include level 3 javascript components as soon as the player reaches level 3:
+//include event Component
+var eventComponent = document.createElement('script');
+eventComponent.setAttribute("src", "./include js/level4Components/events.js");
+scriptContainer.appendChild(eventComponent);
 
-//include pizzaPrice Component
-var pizzaPriceComponent = document.createElement('script');
-pizzaPriceComponent.setAttribute("src", "./include js/level3Components/pizzaPriceComponent.js");
-scriptContainer.appendChild(pizzaPriceComponent);
-//include pizzaDemand Component
-var pizzaDemandComponent = document.createElement('script');
-pizzaDemandComponent.setAttribute("src", "./include js/level3Components/pizzaDemandComponent.js");
-scriptContainer.appendChild(pizzaDemandComponent);
-//include advertising Component
-var advertisingComponent = document.createElement('script');
-advertisingComponent.setAttribute("src", "./include js/level3Components/advertisingComponent.js");
-scriptContainer.appendChild(advertisingComponent);
+
 
 
 //function for showing the instructions modal of level 3
-function showModalLevel3() {
+function showModalLevel4() {
 
     // Create the modal element
     const modal = document.createElement('div');
     modal.classList.add('modal', 'fade');
-    modal.id = 'level3Modal';
+    modal.id = 'level4Modal';
     modal.tabIndex = '-1';
     modal.role = 'dialog';
-    modal.setAttribute('aria-labelledby', 'level3ModalLabel');
+    modal.setAttribute('aria-labelledby', 'level4ModalLabel');
     modal.setAttribute('aria-hidden', 'true');
 
     // Create the modal dialog element
@@ -54,8 +40,8 @@ function showModalLevel3() {
     // Create the modal title element
     const modalTitle = document.createElement('h5');
     modalTitle.classList.add('modal-title');
-    modalTitle.id = 'level3ModalLabel';
-    modalTitle.textContent = 'Congratulations, you have reached Level 3!';
+    modalTitle.id = 'level4ModalLabel';
+    modalTitle.textContent = 'Congratulations, you have reached Level 4!';
 
     // Create the close button element
     const closeButton = document.createElement('button');
@@ -82,13 +68,13 @@ function showModalLevel3() {
 
     // Create the modal body content paragraphs
     const modalBodyContentParagraph_1 = document.createElement('p');
-    modalBodyContentParagraph_1.textContent = 'You can now change the price of the pizzas and manipulate the public demand.'
+    modalBodyContentParagraph_1.textContent = 'You now have competition! Try to get a higher Pizzas Sold count than your competitors! Every Day random events might happen. Take advantage of them!'
      
     const modalBodyContentParagraph_2 = document.createElement('p');
-    modalBodyContentParagraph_2.textContent = 'Your second way to boost demand and sell more pizzas is through investing into advertising. You can distribute flyers or start a poster campaign.'
+    modalBodyContentParagraph_2.textContent = '----- PLACEHOLDER FOR IN DEPTH DESCRIPTION -----'
     
     const modalBodyContentParagraph_3 = document.createElement('p');
-    modalBodyContentParagraph_3.textContent = 'To reach level 4 you need a total of ' + winCondition + ' Pizzas sold.';
+    modalBodyContentParagraph_3.textContent = 'To reach level 5 you need to reach number one on the highscore list!';
  
     // Append the modal body content to the modal body
     modalBody.appendChild(modalBodyContentParagraph_1);
@@ -124,5 +110,5 @@ function showModalLevel3() {
     document.body.appendChild(modal);
 
     // Show the modal
-    $('#level3Modal').modal('show');
+    $('#level4Modal').modal('show');
 }

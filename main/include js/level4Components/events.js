@@ -181,7 +181,7 @@ function SetEventInterval(num) { //Use this function for testing
             }
             else 
             {
-            eventPityChance+=0.35;
+                eventPityChance+=0.35;
             }
         }
         

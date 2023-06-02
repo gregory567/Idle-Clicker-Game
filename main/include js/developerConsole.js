@@ -16,9 +16,18 @@ function setTotalPizzas(amount)
 }
 
 function setLevel(num) {
+  /*
   for (; currentLevel <= num; currentLevel++) {
     GetLevel();
   }
+  */
+ //didnt work correctly with the for loop above
+ while (currentLevel < num) {
+    currentLevel++;
+    GetLevel();
+ }
+
+  console.log("current level setLevelCheatFunction: "+currentLevel);
 }
 
 function enableAdField()

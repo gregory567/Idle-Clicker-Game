@@ -76,6 +76,10 @@ function GetLevel(){
     const level3ScriptTag = document.createElement("script");
     level3ScriptTag.setAttribute("src", "./include js/level3.js");
     scriptContainer.appendChild(level3ScriptTag);
+  } else if (currentLevel == 4) {
+    const level4ScriptTag = document.createElement("script");
+    level4ScriptTag.setAttribute("src", "./include js/level4.js");
+    scriptContainer.appendChild(level4ScriptTag);
 
   }
 }
@@ -121,6 +125,7 @@ function ReducePlusCounter(){
       }
       
       if (pizzasWarmedUp == winCondition) {
+        console.log("current level: " + currentLevel + " Reduce Plus counter function");
         currentLevel++;
         GetLevel();
       }
@@ -157,6 +162,7 @@ function pizzaButtonOnClick () {
     // when the initial pizza storage of 50 is used up
     } else if (currentLevel==1) {
       // step up to level 2 and call GetLevel function
+      console.log("current level: " + currentLevel + " PizzaButton On Click");
       currentLevel++;
       GetLevel();
     }
