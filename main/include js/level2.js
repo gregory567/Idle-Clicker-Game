@@ -63,11 +63,19 @@ createAdButton.classList.add("button");
 createAdButton.setAttribute("onclick", "CreateAd()");
 createAdField.appendChild(createAdButton);
 
+function OnAdClicked()
+{
+    curMoney+=0.1; //Player gets 10 cents per click
+    moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+    window.open('adSite.html');
+}
+
 function CreateAd() { //Enables advertisement and removes the ability to enable it
 
     leftAd.style.opacity = 1;
-    curMoney += 10;
-    moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+    leftAd.onclick=OnAdClicked;
+    
+    
     newCol3.removeChild(createAdField);
 }
 
