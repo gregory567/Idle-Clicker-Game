@@ -118,7 +118,18 @@ function ReducePlusCounter(){
       else
       {
         if (pizzaOrders>0)
-        { curMoney += pizzaOrderList.shift(); }
+        {
+          if(pizzaOrderList.length == 0)
+          {
+            curMoney += pizzaPrice;
+            console.log(pizzaOrderList.shift());
+          }
+          else
+          {
+            curMoney += pizzaOrderList.shift();
+            console.log(pizzaOrderList.shift());
+          }
+        }
         
       }
       
