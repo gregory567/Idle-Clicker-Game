@@ -174,7 +174,7 @@ function createAutomat(){
         // increase pizza multiplier
         pizzaMultiplier++;
         // increase price of automat
-        automatPrice = automatPrice*(Math.pow(1.5,pizzaMultiplier));
+        automatPrice = automatPrice*(Math.pow(1.05,pizzaMultiplier));
         automatPrice = Math.round(automatPrice*100)/100; //Round to two decimals
         // display updated variables to user
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
@@ -266,7 +266,7 @@ function createAutoBuyer()
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
         autoBuyerAmount++;
-        autoBuyerPrice = autoBuyerPrice*Math.pow(autoBuyerPriceGrowth, autoBuyerAmount);
+        autoBuyerPrice = autoBuyerPrice*Math.pow(1.05, autoBuyerAmount);
         autoBuyerPrice = Math.round(autoBuyerPrice*100)/100;
         updateAutoBuyerWindow();
     }

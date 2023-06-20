@@ -44,7 +44,6 @@ var winCondition = 0;
 
 var autoBuyerDelay = 1000;
 var autoBuyerPrice = 50; // initial price of the pizza buying machine
-var autoBuyerPriceGrowth = 1.5;
 var maxAutoPizzas = 10; //If the player has this many frozen pizzas, autobuyer will not buy any more pizzas
 var autoBuyerAmount = 0; 
 var autoBuyerActive = true;

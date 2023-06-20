@@ -1,5 +1,5 @@
 //set new winCondition and show the instructions modal for this level
-winCondition = 500;
+winCondition = 5000;
 showModalLevel3();
 l3active = true;
 console.log("You reached level 3!");
