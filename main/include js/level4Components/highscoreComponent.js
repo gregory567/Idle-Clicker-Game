@@ -1,53 +1,29 @@
 
-// create a new div with class "col-3": column for advertisement
-const highscoreCol3 = document.createElement("div");
-highscoreCol3.setAttribute("class","col-3");
+// Create the outer div element with class "col-3"
+const colDiv = $('<div>').addClass('col-3');
 
-// create a new div with id "advertisement": button container for advertisement
-const highscoreDiv = document.createElement("div");
-highscoreDiv.id = "highscore";
+// Create the inner div element with classes "button-container" and "highscore-container", and set its id
+const highscoreListDiv = $('<div>').addClass('button-container').attr('id', 'highscore-container');
 
-var competitorA = 'Osteria Mamma Mia';
-var competitorB = 'Pizzeria Bella Napoli';
-var competitorC = 'Ristorante Buon Appetito';
-var competitorD = 'Il Gusto Italiano';
+// Append the inner div element to the outer div element
+colDiv.append(highscoreListDiv);
+
+// Append the outer div element to the desired parent element in the DOM
+$('#second_row').append(colDiv);
+
+
+const competitorA = 'Osteria Mamma Mia';
+const competitorB = 'Pizzeria Bella Napoli';
+const competitorC = 'Ristorante Buon Appetito';
+const competitorD = 'Il Gusto Italiano';
 
 var initialHighscores = [
     { name: playerName, score: pizzasWarmedUp },
-    { name: 'Osteria Mamma Mia', score: 700 },
-    { name: 'Pizzeria Bella Napoli', score: 600 },
-    { name: 'Ristorante Buon Appetito', score: 500 },
-    { name: 'Il Gusto Italiano', score: 400 },
+    { name: competitorA, score: 700 },
+    { name: competitorB, score: 600 },
+    { name: competitorC, score: 500 },
+    { name: competitorD, score: 400 },
 ];
-
-
-/*//first try
-// Function to generate the highscore list
-function generateHighscoreList(highscores) {
-    highscores.sort((a, b) => b.score - a.score);
-    const highscoreList = document.createElement('ul');
-    highscoreList.innerHTML = '';
-  
-    for (let i = 0; i < highscores.length; i++) {
-      const highscore = highscores[i];
-      const listItem = document.createElement('li');
-      listItem.innerText = `${i + 1}. ${highscore.name} - ${highscore.score}`;
-      highscoreList.appendChild(listItem);
-    }
-
-    
-    const highscoreListDiv = document.getElementById('highscoreListDiv');
-    highscoreListDiv.innerHTML = '';
-    highscoreListDiv.appendChild(highscoreList);
-    
-    const highscoreListDiv = $('#highscoreListDiv');
-    highscoreListDiv.hide(); // Hide the highscore list initially
-    highscoreListDiv.empty().append(highscoreList);
-    highscoreListDiv.slideDown('slow'); // Slide down to display the highscore list
-}
-*/
-
-
 
 
 // Function to generate the highscore list with element animations
@@ -64,20 +40,10 @@ function generateHighscoreList(highscores) {
     listItem.hide().delay(i * 200).fadeIn('slow');
   }
 
-  const highscoreListDiv = $('#highscore-container');
   highscoreListDiv.empty().append(highscoreList);
   highscoreListDiv.show();
-  highscoreDiv.append(highscoreListDiv);
-
-  const thirdRow = document.getElementById("third_row");
-  thirdRow.append(highscoreDiv);
-
 
 }
-
-
-
-
 
 generateHighscoreList(initialHighscores);
 
