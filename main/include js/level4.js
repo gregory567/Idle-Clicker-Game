@@ -75,15 +75,13 @@ function showModalLevel4() {
     modalBodyContentParagraph_1.textContent = 'You now have competition! Try to get a higher Pizzas Sold count than your competitors! Every Day random events might happen. Take advantage of them!'
      
     const modalBodyContentParagraph_2 = document.createElement('p');
-    modalBodyContentParagraph_2.textContent = '----- PLACEHOLDER FOR IN DEPTH DESCRIPTION -----'
+    modalBodyContentParagraph_2.textContent = 'To win the game you need to reach number one on the highscore list! Good Luck!';
     
-    const modalBodyContentParagraph_3 = document.createElement('p');
-    modalBodyContentParagraph_3.textContent = 'To reach level 5 you need to reach number one on the highscore list!';
+
  
     // Append the modal body content to the modal body
     modalBody.appendChild(modalBodyContentParagraph_1);
     modalBody.appendChild(modalBodyContentParagraph_2);
-    modalBody.appendChild(modalBodyContentParagraph_3);
 
     // Create the modal footer element
     const modalFooter = document.createElement('div');
