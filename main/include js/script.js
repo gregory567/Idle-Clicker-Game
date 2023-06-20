@@ -95,12 +95,15 @@ function GetLevel(){
 
 // function that reduces the plus counter variable, 
 // increases the number of prepared pizzas and increments the money counter
-function ReducePlusCounter(){ 
+function ReducePlusCounter()
+{ 
       // reduce the plus counter
       plusCounter--;
-      if (plusCounter==0){
+      if(plusCounter==0)
+      {
         pizzaPlusCounter.innerText="";
-      } else {
+      } 
+      else {
         pizzaPlusCounter.innerText = "+" + plusCounter;
       }
       
@@ -111,39 +114,33 @@ function ReducePlusCounter(){
       pizzaCounter.innerText = pizzasWarmedUp;
       // increment the current funds
 
-      if (currentLevel < 3)
+      if(currentLevel < 3)
       {
         curMoney += pizzaValue;
       }
       else
       {
-        if (pizzaOrders>0)
+        if(pizzaOrders > 0)
         {
-          if(pizzaOrderList.length == 0)
-          {
-            curMoney += pizzaPrice;
-            console.log(pizzaOrderList.shift());
-          }
-          else
+          if(pizzaOrderList.length > 0) 
           {
             curMoney += pizzaOrderList.shift();
-            console.log(pizzaOrderList.shift());
           }
+          pizzaOrders--;
         }
-        
       }
       
       // update the money counter variable (visible for the user)
       moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
       // mechanism that calls back this function as long as the plus counter is larger than 0
-      if (plusCounter>0){
+      if(plusCounter>0) {
         setTimeout(function(){
           ReducePlusCounter();
         }, plusCounterDecreaseSpeed)
       }
       
-      if (pizzasWarmedUp == winCondition) {
+      if(pizzasWarmedUp == winCondition) {
         console.log("current level: " + currentLevel + " Reduce Plus counter function");
         currentLevel++;
         GetLevel();
