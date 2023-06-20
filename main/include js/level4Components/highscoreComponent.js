@@ -19,10 +19,10 @@ const competitorD = 'Il Gusto Italiano';
 
 var initialHighscores = [
     { name: playerName, score: pizzasWarmedUp },
-    { name: competitorA, score: 700 },
-    { name: competitorB, score: 600 },
-    { name: competitorC, score: 500 },
-    { name: competitorD, score: 400 },
+    { name: competitorA, score: 8000 },
+    { name: competitorB, score: 6043 },
+    { name: competitorC, score: 5090 },
+    { name: competitorD, score: 10000 },
 ];
 
 
@@ -47,10 +47,12 @@ function generateHighscoreList(highscores) {
 
 generateHighscoreList(initialHighscores);
 
-//dummy data
+/*
+// test dummy data
 pizzasWarmedUp = 4000;
 initialHighscores[4].score = pizzasWarmedUp;
 initialHighscores[1].score = 8000;
+*/
 
 //calls the update functions for the highscores every 5 seconds
 const intervalID = setInterval(function(){

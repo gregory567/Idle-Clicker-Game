@@ -38,16 +38,16 @@ function increasePizzaValue() {
 //onclick function that decreases the pizza selling price by 1 cent as long as the price is >1 and disables the decrease button if the selling price is 1
 function decreasePizzaValue() {
     //if pizza selling price is greater 1 decrease by 10 cent
-    if (pizzaValue > 1) {
+    if (pizzaValue > 1.5) {
         pizzaValue -= 0.1;
         updatePizzaValueText();
         //a price decrease has a positive effect on the public demand
         setPizzaDemand(pizzaDemand * 1.01);
         //if pizza value is now 1, disable the decrease button
-        if (pizzaValue <= 1) {
+        if (pizzaValue <= 1.5) {
             decreasePriceButton.disabled = true;
             //due to floating value the pizza price could drop below 1 (0.9999999), so we set to 1
-            pizzaValue = 1;
+            pizzaValue = 1.5;
             updatePizzaValueText();
         }
     }

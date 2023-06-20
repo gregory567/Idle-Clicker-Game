@@ -1,5 +1,5 @@
 //set new winCondition and show the instructions modal for this level
-winCondition = 150;
+winCondition = 500;
 
 //For power outage event
 var autoOn = true;

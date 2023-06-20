@@ -48,7 +48,7 @@ function increasePosterPrice() {
         curMoney-=posterPrice;
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
-        posterPrice = posterPrice*1.5;
+        posterPrice = posterPrice*1.1;
         posterPrice = Math.round(posterPrice*100)/100;
         posterText.innerHTML = "Cost: " + posterPrice;
         increaseDemand(10); //posters give a 10% boost of the current demand 

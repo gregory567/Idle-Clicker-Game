@@ -29,7 +29,7 @@ function updatePizzaOrdersText() {
 setInterval(function() {
     updatePizzaOrdersValue();
     setInterval(updatePizzaOrdersText, 100);
-}, 5000);
+}, 3500);
 
 // function for getting new orders every 5 seconds --> 1hour in the game
 function updatePizzaOrdersValue() {
