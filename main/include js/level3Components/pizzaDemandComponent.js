@@ -70,7 +70,5 @@ pizzaButtonOnClick = function () {
       setTimeout(function() {
           pizzaButton.style.transform = "scale(1.05)";
       }, 50);
-
-    // when the initial pizza storage of 50 is used up
     }
 };
