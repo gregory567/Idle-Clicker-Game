@@ -29,11 +29,11 @@ var initialHighscores = [
 // Function to generate the highscore list with element animations
 function generateHighscoreList(highscores) {
   highscores.sort((a, b) => b.score - a.score);
-  const highscoreList = $('<ul></ul>');
+  const highscoreList = $('<ol></ol>');
 
   for (let i = 0; i < highscores.length; i++) {
     const highscore = highscores[i];
-    const listItem = $('<li></li>').text(`${i + 1}. ${highscore.score} - ${highscore.name}`);
+    const listItem = $('<li></li>').text(`${highscore.score} - ${highscore.name}`);
     highscoreList.append(listItem);
     
     // Apply animation to each list item
@@ -73,7 +73,7 @@ const intervalID = setInterval(function(){
 function updateHighscoreUser(highscores) {
   for (var i = 0; i < highscores.length; i++) {
     if (highscores[i].name === playerName) {
-      console.log(playerName);
+        //console.log(playerName);
         highscores[i].score = pizzasWarmedUp;
         break; 
       }

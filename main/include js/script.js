@@ -55,13 +55,14 @@ const abField = document.getElementById("autobuyer-container");
 
 // display the welcome modal on page load
 $(document).ready(function() {
+  setPlayerName();
   $("#welcomeModal").modal("show"); 
   pizzaButton.style.border="none"; // we need this line to fix the bug with the background of the pizza button
   leftAd.style.opacity = 0; // hide the div which contains the advertisement on the left hand side of the page
 });
 
-// print to the console on page load 
-document.addEventListener("DOMContentLoaded", () => {
+// print to the console on page load
+function setPlayerName(){   // document.addEventListener("DOMContentLoaded", () ) ---> wurde ersetzt
   console.log("Loaded game!"); 
 
   // ask the player to enter his name
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Example: Display a welcome message with the player's name
   console.log("Welcome, " + playerName + "! Let's start the game.");
-});
+}
 
 // this function prints the current level to the console and includes the script-file of the next level
 function GetLevel(){
