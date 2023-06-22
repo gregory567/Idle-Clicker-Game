@@ -33,11 +33,16 @@ setInterval(function() {
 
 // function for getting new orders every 5 seconds --> 1hour in the game
 function updatePizzaOrdersValue() {
+    // calculating new orders
     let newOrders = Math.round(21 * Math.pow(0.8, pizzaValue) * pizzaDemand/100);
-    pizzaOrders += newOrders;
-    for (var i = 0; i < newOrders; i++)
+    // When pizzaOrders are above 1000, you stop taking new orders
+    if(pizzaOrders < 1000)
     {
-        pizzaOrderList.push(pizzaValue); //Add order to list
+        pizzaOrders += newOrders;
+        for (var i = 0; i < newOrders; i++)
+        {
+            pizzaOrderList.push(pizzaValue); //Add order to list
+        }
     }
 }
 

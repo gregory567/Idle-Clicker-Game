@@ -145,7 +145,7 @@ function showModalWin() {
     const modalTitle = document.createElement('h5');
     modalTitle.classList.add('modal-title');
     modalTitle.id = 'winModalLabel';
-    modalTitle.textContent = 'Congratulations, '+playerName+'!';
+    modalTitle.textContent = 'Congratulations!';
 
     // Create the close button element
     const closeButton = document.createElement('button');

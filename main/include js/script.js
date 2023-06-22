@@ -66,10 +66,11 @@ function setPlayerName(){   // document.addEventListener("DOMContentLoaded", () 
   console.log("Loaded game!"); 
 
   // ask the player to enter his name
-  playerName = prompt("Enter your name:");
+  //playerName = prompt("Enter your name:");
+  playerName = "You";
 
-  // Example: Display a welcome message with the player's name
-  console.log("Welcome, " + playerName + "! Let's start the game.");
+  // Example: Display a welcome message
+  console.log("Welcome! Let's start the game.");
 }
 
 // this function prints the current level to the console and includes the script-file of the next level
