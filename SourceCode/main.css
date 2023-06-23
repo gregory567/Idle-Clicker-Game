@@ -14,6 +14,13 @@
     margin-top: 25px;
 }
 
+.playernamecont:hover {
+    cursor:pointer;
+    font-weight:bold;
+
+}
+
+
 .button:hover {
     transform:scale(1.02);
     background-color: antiquewhite;

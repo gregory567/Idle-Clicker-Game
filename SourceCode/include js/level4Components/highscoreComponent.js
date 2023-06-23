@@ -26,6 +26,8 @@ var initialHighscores = [
 ];
 
 
+
+
 // Function to generate the highscore list with element animations
 function generateHighscoreList(highscores) {
   highscores.sort((a, b) => b.score - a.score);
@@ -70,6 +72,18 @@ const intervalID = setInterval(function(){
 
 
 //updates the highscore of the user in the initialHighscore array with the pizzasWarmedUp
+function updateHighScoreUserName(highscores, oldName, newName)
+{
+  for (var i = 0; i < highscores.length; i++) {
+    if (highscores[i].name === oldName) {
+        
+        highscores[i].name=newName;
+        console.log("Name updated in highscore list");
+        generateHighscoreList(initialHighscores);
+        break; 
+      }
+  }
+}
 function updateHighscoreUser(highscores) {
   for (var i = 0; i < highscores.length; i++) {
     if (highscores[i].name === playerName) {

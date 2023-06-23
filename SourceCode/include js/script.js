@@ -13,6 +13,7 @@ const scriptContainer = document.getElementById("script-container");
 
 // global variable to store the player's name for the highscore list
 var playerName;
+const playerNameCont=document.getElementById("pname");
 
 // intialize essential variables 
 var pizzaStorage = 50;
@@ -55,19 +56,41 @@ const abField = document.getElementById("autobuyer-container");
 
 // display the welcome modal on page load
 $(document).ready(function() {
-  setPlayerName();
+  setPlayerName("Rookie");
   $("#welcomeModal").modal("show"); 
   pizzaButton.style.border="none"; // we need this line to fix the bug with the background of the pizza button
   leftAd.style.opacity = 0; // hide the div which contains the advertisement on the left hand side of the page
 });
 
+playerNameCont.onclick = function() {
+
+  var oldName = playerName;
+
+  let newName = prompt("Please enter your new name!");
+  if (newName!=null)
+  {
+    if (newName.length > 16)
+    {
+      newName = newName.substring(0,16);
+    }
+    setPlayerName(newName);
+    if (currentLevel >= 4)
+    {
+    updateHighScoreUserName(initialHighscores,oldName,newName);
+    }
+  }
+  
+
+}
+
 // print to the console on page load
-function setPlayerName(){   // document.addEventListener("DOMContentLoaded", () ) ---> wurde ersetzt
+function setPlayerName(n){   // document.addEventListener("DOMContentLoaded", () ) ---> wurde ersetzt
   console.log("Loaded game!"); 
 
   // ask the player to enter his name
   //playerName = prompt("Enter your name:");
-  playerName = "You";
+  playerName = n;
+  playerNameCont.innerHTML = playerName + " (Click to edit)";
 
   // Example: Display a welcome message
   console.log("Welcome! Let's start the game.");

@@ -11,8 +11,8 @@ eventBar.appendChild(eventName);
 eventBar.appendChild(eventdesc);
 eventBar.style.opacity=0;
 document.body.appendChild(eventBar);
-var eventChance=10; //Percentage of an event happening every x seconds
-var eventInterval=60000; //Every x/1000 seconds, there is a chance of an event happening
+var eventChance=25; //Percentage of an event happening every day
+var eventInterval=120000; //Every x/1000 seconds, there is a chance of an event happening
 var eventPityChance=1; //If no event happens, increase this counter by something
 var eventActive=false; //Event can only be triggered if no event is active 
 
@@ -147,6 +147,37 @@ function TriggerPO() {
 //Pool of events that can be picked from
 const eventFunctionsList = [TriggerFestival,TriggerInflation,TriggerPO,TriggerPizzaSale];
 
+function triggerRandomEvent()
+{
+    if (eventActive==false)
+    {
+        var x = Math.floor(Math.random()*eventFunctionsList.length-1) //Pick random event
+        console.log(x);
+        if (x > 3)
+                {
+                    x=3;
+                    console.log("index of event list was out of bounds!");
+                }
+        if (x < 0)
+        {
+            x=3;
+            console.log("index of event list was out of bounds!");
+        }
+        if (eventFunctionsList[x]==null)
+        {
+            console.log("Event was null")
+            TriggerPizzaSale();
+        }
+        else
+        {
+            
+            let result = eventFunctionsList[x]();
+        }
+        
+        
+    }
+}
+
 eInterval = setInterval(function() {
 
     if (eventActive==false)
@@ -177,6 +208,10 @@ function SetEventInterval(num) { //Use this function for testing
             if (chance <= eventChance * eventPityChance)
             {
                 var x = Math.floor(Math.random()*eventFunctionsList.length-1)
+                if (x > 3)
+                {
+                    x=3;
+                }
                 let result = eventFunctionsList[x]();
             }
             else 
