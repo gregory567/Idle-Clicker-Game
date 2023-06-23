@@ -5,17 +5,29 @@ Video - Text und Struktur:
 -Startbild mit allen Mitgliedernamen und Projektname-
 
 Projektidee:
-"Im Rahmen des IT-Projekts haben wir ein Browser Game entwickelt, bei dem Pizzen erstellt werden und das Ziel ist, am Ende die meisten Pizzen erstellt zu haben.
+-Spiel beginnen und passende Stellen zeigen (manchmal fast forward, manchmal langsam)-
+"Im Rahmen des IT-Projekts haben wir ein Browser Game entwickelt, bei dem Pizzen produziert werden und das Ziel ist, am Ende die meisten Pizzen erstellt zu haben.
 Anfangs gibt es einen einzigen Button zum Aufwärmen von Pizzen, welche automatisch verkauft werden.
-Im weiteren Spielfortschritt schaltet der User durch jedes Level neue Features frei: zum Beispiel eine Pizza-Maschine zur Produktion oder einen automatischen Pizza-Einkäufer."
+Im weiteren Spielfortschritt schaltet der User durch jedes Level neue Features frei: zum Beispiel eine Pizza-Maschine zur Produktion oder einen automatischen Pizza-Einkäufer.
+Nach 500 verkauften Pizzen bekommt der Spieler Bestellungen, welche von der Nachfrage und dem Verkaufspreis abhängen. Ein hoher Verkaufspreis minimiert die Bestellungen, erhöht jedoch den Gewinn und vice versae. Die Nachfrage wird durch temporäre oder konstante Werbung erhöht - es entstehen mehr Bestellungen.
+Nach 5000 Pizzen konkurriert das eigene Geschäft gegen andere Pizzerien in der Stadt um die meist verkauften Pizzen. Mit dem Erreichen des ersten Platzes endet das Spiel und kann neu gestartet werden."
 
 Implementierung:
+-Zeigen von der Projektstruktur und von Github-
 "Die Funktionalität unseres Klicker-Games haben wir rein in javascript programmiert und zur Darstellung wurde neben HMTL auch mit CSS gearbeitet.
-Wir haben uns am Anfang des Projekts für Visual Studio Code als Entwicklungsumgebungs und für Github als Code-Repository entschieden. Während VS Code für alle Projektmitglieder bekannt war, mussten wir den Umgang mit Branches in Github erstmals umsetzen und haben pro Sprint jeweils eine Branch erstellt, damit strukturierte und nachvollziehbare Entwicklung möglich ist. Eine Unterteilung der Branches nach neuen Funtkionalitäten war nicht notwendig, weil alle Features zusammenhängend sind und konkrete Abgrenzungen nur selten möglich sind."
+Wir haben uns am Anfang des Projekts für Visual Studio Code als Entwicklungsumgebungs und für Github als Code-Repository entschieden. Während VS Code für alle Projektmitglieder bekannt war, mussten wir den Umgang mit Branches in Github erstmals umsetzen und haben pro Sprint jeweils eine Branch erstellt, damit strukturierte und nachvollziehbare Entwicklung möglich ist. Eine Unterteilung der Branches nach neuen Funtkionalitäten war nicht notwendig, weil alle Features zusammenhängend sind und konkrete Abgrenzungen nur selten möglich waren."
 
 Projekt-Planung:
+-Zeigen von Trello mit einzelnen Karten-
 "Die Projektorganisation und -Entwicklung wurde nach Kanban umgesetzt. Mithilfe von dem Planungstool Trello visualisieren wir unser Kanban-Board: Eigene Spalten zum Backlog, in Bearbeitung oder fertige Sprints sind als Spalten zu sehen. Swimmlanes sind für unsere Projektgröße nicht notwendig und wurden weggelassen.
 Die zweiwöchigen Sprints beginnen mit der Erstellung der Karten für den kommenden Sprint und enden stets mit einem internen Meeting (zur Besprechung und Dokumentation) - gegebenfalls gibt es auch ein Sprint-Meeting mit unserem Betreuer."
 
 Momentaner Status:
-"Die Spiellogik ermöglicht eine individuelle Gestaltung - so ist unser Projekt derzeit fertig und spielbar, kann aber dennoch weiterentwickelt werden mithilfe von zusätzlichen Komponenten."
+-Demonstration vom Restaurant-Management-Konzept-Bild-
+"Dank der Einfachheit der Spiellogik präsentieren wir zwar ein fertiges Spiel, können aber auch zusätzliche Komponenten hinzufügen. Unter Anderem haben wir vor, in den Sommerferien an dem Projekt weiter zu arbeiten und auf ein Restaurant-Management-Level zu erweitern."
+
+
+
+
+mit -...- ist der Videoinhalt gemeint
+mit "..." ist das Gesprochene gemeint
