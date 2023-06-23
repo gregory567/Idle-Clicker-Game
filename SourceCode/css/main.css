@@ -76,7 +76,7 @@
 }
   
 #pizza-button {
-    background-image: url('./pictures/pizza.jpg'); 
+    background-image: url('../pictures/pizza.jpg'); 
     background-size: cover;
     width: 200px;
     height: 200px;
