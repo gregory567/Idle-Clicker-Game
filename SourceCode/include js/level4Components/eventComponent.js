@@ -1,6 +1,6 @@
 $(document).ready(function() {
     console.log("Events loaded!");
-  });
+});
 
 
 const eventBar = document.createElement("div");
@@ -80,6 +80,8 @@ function TriggerPizzaSale() { //Create trigger function
     pizzaSale.triggerEvent();
 }
 
+
+
 class InflationEvent extends RandomEvent {
     onEventEnd() {
         pizzaPrice=1.50;
@@ -113,6 +115,8 @@ festival.setDescription("The Pizza Festival is taking place! Demand is massively
 function TriggerFestival() {
     festival.triggerEvent();
 }
+
+
 
 class PowerEvent extends RandomEvent {
     onEventEnd() {
@@ -205,5 +209,4 @@ function SetEventInterval(num) { //Use this function for testing
             }
         }
     },eventInterval)
-    
 }
