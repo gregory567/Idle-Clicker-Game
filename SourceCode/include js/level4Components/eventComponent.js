@@ -139,13 +139,13 @@ function triggerRandomEvent()
 {
     if (eventActive==false)
     {
-        var x = Math.floor(Math.random()*(eventFunctionsList.length-1)) //Pick random event
+        var x = Math.round(Math.random()*(eventFunctionsList.length-1)) //Pick random event
         console.log(x);
         if (x > 3)
-                {
-                    x=3;
-                    console.log("index of event list was out of bounds!");
-                }
+        {
+            x=3;
+            console.log("index of event list was out of bounds!");
+        }
         if (x < 0)
         {
             x=3;
@@ -158,11 +158,8 @@ function triggerRandomEvent()
         }
         else
         {
-            
             let result = eventFunctionsList[x]();
         }
-        
-        
     }
 }
 
@@ -173,12 +170,12 @@ eInterval = setInterval(function() {
         var chance = Math.floor(Math.random()*100);
         if (chance <= eventChance * eventPityChance)
         {
-            var x = Math.floor(Math.random()*(eventFunctionsList.length-1)) //Pick random event
+            var x = Math.round(Math.random()*(eventFunctionsList.length-1)) //Pick random event
             let result = eventFunctionsList[x](); //Trigger event
         }
         else 
         {
-        eventPityChance+=0.35; //Chance of getting an event increases slightly every time you do not get one
+            eventPityChance+=0.35; //Chance of getting an event increases slightly every time you do not get one
         }
     }
     
@@ -195,7 +192,7 @@ function SetEventInterval(num) { //Use this function for testing
             var chance = Math.floor(Math.random()*100);
             if (chance <= eventChance * eventPityChance)
             {
-                var x = Math.floor(Math.random()*(eventFunctionsList.length-1))
+                var x = Math.round(Math.random()*(eventFunctionsList.length-1))
                 if (x > 3)
                 {
                     x=3;
@@ -207,7 +204,6 @@ function SetEventInterval(num) { //Use this function for testing
                 eventPityChance+=0.35;
             }
         }
-        
     },eventInterval)
     
 }
