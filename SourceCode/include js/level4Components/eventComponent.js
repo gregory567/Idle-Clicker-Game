@@ -27,8 +27,6 @@ class RandomEvent {
     {
         this.name=name;
         this.duration=duration;
-        
-
     }
     onEventEnd() {
         currentEvent=null;
@@ -55,9 +53,6 @@ class RandomEvent {
             this.onEventEnd();
         },this.duration)
     }
-    
-    
-
 }
 
 function StopEvent() {
@@ -66,8 +61,6 @@ function StopEvent() {
         currentEvent.onEventEnd();
     }
 }
-
-
 
 class PizzaSaleEvent extends RandomEvent { //Create new subclass for event
     onEventEnd() { //Override the event trigger and end functions
@@ -105,8 +98,6 @@ function TriggerInflation() {
     inf.triggerEvent();
 }
 
-
-
 class FestivalEvent extends RandomEvent {
     onEventEnd() {
         decreaseDemandInstant(150);
@@ -138,9 +129,6 @@ powerOutage.setDescription("There is a power outage! All machines have stopped w
 function TriggerPO() {
     powerOutage.triggerEvent();
 }
-
-
-
 
 
 
@@ -194,7 +182,7 @@ eInterval = setInterval(function() {
         }
     }
     
-},eventInterval)
+},eventInterval);
 
 function SetEventInterval(num) { //Use this function for testing
     eventInterval=num*1000;
