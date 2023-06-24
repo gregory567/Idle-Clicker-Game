@@ -139,7 +139,7 @@ function triggerRandomEvent()
 {
     if (eventActive==false)
     {
-        var x = Math.floor(Math.random()*eventFunctionsList.length-1) //Pick random event
+        var x = Math.floor(Math.random()*(eventFunctionsList.length-1)) //Pick random event
         console.log(x);
         if (x > 3)
                 {
@@ -173,7 +173,7 @@ eInterval = setInterval(function() {
         var chance = Math.floor(Math.random()*100);
         if (chance <= eventChance * eventPityChance)
         {
-            var x = Math.floor(Math.random()*eventFunctionsList.length-1) //Pick random event
+            var x = Math.floor(Math.random()*(eventFunctionsList.length-1)) //Pick random event
             let result = eventFunctionsList[x](); //Trigger event
         }
         else 
@@ -195,7 +195,7 @@ function SetEventInterval(num) { //Use this function for testing
             var chance = Math.floor(Math.random()*100);
             if (chance <= eventChance * eventPityChance)
             {
-                var x = Math.floor(Math.random()*eventFunctionsList.length-1)
+                var x = Math.floor(Math.random()*(eventFunctionsList.length-1))
                 if (x > 3)
                 {
                     x=3;
