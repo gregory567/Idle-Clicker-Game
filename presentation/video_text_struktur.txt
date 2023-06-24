@@ -14,17 +14,20 @@ Nach 5000 Pizzen konkurriert das eigene Geschäft gegen andere Pizzerien in der 
 
 Implementierung:
 -Zeigen von der Projektstruktur und von Github-
-"Die Funktionalität unseres Klicker-Games haben wir rein in javascript programmiert und zur Darstellung wurde neben HMTL auch mit CSS gearbeitet.
-Wir haben uns am Anfang des Projekts für Visual Studio Code als Entwicklungsumgebungs und für Github als Code-Repository entschieden. Während VS Code für alle Projektmitglieder bekannt war, mussten wir den Umgang mit Branches in Github erstmals umsetzen und haben pro Sprint jeweils eine Branch erstellt, damit strukturierte und nachvollziehbare Entwicklung möglich ist. Eine Unterteilung der Branches nach neuen Funtkionalitäten war nicht notwendig, weil alle Features zusammenhängend sind und konkrete Abgrenzungen nur selten möglich waren."
+"Die Funktionalität unseres Klicker-Games haben wir rein in Javascript programmiert und zur Darstellung wurde neben HMTL auch mit CSS gearbeitet.
+Wir haben uns am Anfang des Projekts für Visual Studio Code als Entwicklungsumgebungs und für Github als Code-Repository entschieden. 
+Mehr als 80% des Projektes wurde in Javascript geschrieben - deshalb haben wir einzelne Spiellevels in Komponenten unterteilt, um Übersicht und Programmordnung zu schaffen. Zum Beispiel gibt es für das dritte Level die Komponenten: Werbung, Nachfrage und Preis.
+Während VS Code für alle Projektmitglieder bekannt war, mussten wir den Umgang mit Branches in Github erstmals umsetzen und haben pro Sprint jeweils eine Branch erstellt, damit strukturierte und nachvollziehbare Entwicklung möglich ist. Eine Unterteilung der Branches nach neuen Funtkionalitäten war nicht notwendig, weil alle Features zusammenhängend sind und konkrete Abgrenzungen nur selten möglich waren. Die Ordnerstruktur wurde nach den Moodle-Vorgaben umgesetzt."
 
 Projekt-Planung:
 -Zeigen von Trello mit einzelnen Karten-
-"Die Projektorganisation und -Entwicklung wurde nach Kanban umgesetzt. Mithilfe von dem Planungstool Trello visualisieren wir unser Kanban-Board: Eigene Spalten zum Backlog, in Bearbeitung oder fertige Sprints sind als Spalten zu sehen. Swimmlanes sind für unsere Projektgröße nicht notwendig und wurden weggelassen.
+"Die Projektorganisation und -Entwicklung wurde nach Kanban umgesetzt. Mithilfe von "Trello" visualisieren wir unser Kanban-Board: Eigene Spalten zum Backlog, in Bearbeitung oder fertige Sprints sind als Spalten zu sehen und beinhalten die jeweils passenden Karten. So beinhaltet der siebte Sprint die Erstellung der Manuals, Bugfixes oder letzte Komponenten. 
+Swimmlanes sind für unsere Projektgröße nicht notwendig und wurden daher weggelassen.
 Die zweiwöchigen Sprints beginnen mit der Erstellung der Karten für den kommenden Sprint und enden stets mit einem internen Meeting (zur Besprechung und Dokumentation) - gegebenfalls gibt es auch ein Sprint-Meeting mit unserem Betreuer."
 
 Momentaner Status:
 -Demonstration vom Restaurant-Management-Konzept-Bild-
-"Dank der Einfachheit der Spiellogik präsentieren wir zwar ein fertiges Spiel, können aber auch zusätzliche Komponenten hinzufügen. Unter Anderem haben wir vor, in den Sommerferien an dem Projekt weiter zu arbeiten und auf ein Restaurant-Management-Level zu erweitern."
+"Dank der Einfachheit der Spiellogik präsentieren wir zwar ein fertiges Spiel, können aber auch zusätzliche Komponenten hinzufügen. Unter Anderem haben wir vor, in den Sommerferien an dem Projekt weiter zu arbeiten und auf ein Restaurant-Management zu erweitern."
 
 
 
