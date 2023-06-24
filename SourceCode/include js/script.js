@@ -13,6 +13,7 @@ const scriptContainer = document.getElementById("script-container");
 
 // global variable to store the player's name for the highscore list
 var playerName;
+const playerNameCont=document.getElementById("pname");
 
 // intialize essential variables 
 var pizzaStorage = 50;
@@ -44,7 +45,6 @@ var winCondition = 0;
 
 var autoBuyerDelay = 1000;
 var autoBuyerPrice = 50; // initial price of the pizza buying machine
-var autoBuyerPriceGrowth = 1.5;
 var maxAutoPizzas = 10; //If the player has this many frozen pizzas, autobuyer will not buy any more pizzas
 var autoBuyerAmount = 0; 
 var autoBuyerActive = true;
@@ -56,21 +56,45 @@ const abField = document.getElementById("autobuyer-container");
 
 // display the welcome modal on page load
 $(document).ready(function() {
+  setPlayerName("Rookie");
   $("#welcomeModal").modal("show"); 
   pizzaButton.style.border="none"; // we need this line to fix the bug with the background of the pizza button
   leftAd.style.opacity = 0; // hide the div which contains the advertisement on the left hand side of the page
 });
 
-// print to the console on page load 
-document.addEventListener("DOMContentLoaded", () => {
+playerNameCont.onclick = function() {
+
+  var oldName = playerName;
+
+  let newName = prompt("Please enter your new name!");
+  if (newName!=null)
+  {
+    if (newName.length > 16)
+    {
+      newName = newName.substring(0,16);
+    }
+    setPlayerName(newName);
+    if (currentLevel >= 4)
+    {
+    updateHighScoreUserName(initialHighscores,oldName,newName);
+    }
+  }
+  
+
+}
+
+// print to the console on page load
+function setPlayerName(n){   // document.addEventListener("DOMContentLoaded", () ) ---> wurde ersetzt
   console.log("Loaded game!"); 
 
   // ask the player to enter his name
-  playerName = prompt("Enter your name:");
-  
-  // Example: Display a welcome message with the player's name
-  console.log("Welcome, " + playerName + "! Let's start the game.");
-});
+  //playerName = prompt("Enter your name:");
+  playerName = n;
+  playerNameCont.innerHTML = playerName + " (Click to edit)";
+
+  // Example: Display a welcome message
+  console.log("Welcome! Let's start the game.");
+}
 
 // this function prints the current level to the console and includes the script-file of the next level
 function GetLevel(){
@@ -85,6 +109,10 @@ function GetLevel(){
     const level3ScriptTag = document.createElement("script");
     level3ScriptTag.setAttribute("src", "./include js/level3.js");
     scriptContainer.appendChild(level3ScriptTag);
+  } else if (currentLevel == 4) {
+    const level4ScriptTag = document.createElement("script");
+    level4ScriptTag.setAttribute("src", "./include js/level4.js");
+    scriptContainer.appendChild(level4ScriptTag);
 
   }
 }
@@ -92,12 +120,15 @@ function GetLevel(){
 
 // function that reduces the plus counter variable, 
 // increases the number of prepared pizzas and increments the money counter
-function ReducePlusCounter(){ 
+function ReducePlusCounter()
+{ 
       // reduce the plus counter
       plusCounter--;
-      if (plusCounter==0){
+      if(plusCounter==0)
+      {
         pizzaPlusCounter.innerText="";
-      } else {
+      } 
+      else {
         pizzaPlusCounter.innerText = "+" + plusCounter;
       }
       
@@ -108,28 +139,34 @@ function ReducePlusCounter(){
       pizzaCounter.innerText = pizzasWarmedUp;
       // increment the current funds
 
-      if (currentLevel < 3)
+      if(currentLevel < 3)
       {
         curMoney += pizzaValue;
       }
       else
       {
-        if (pizzaOrders>0)
-        { curMoney += pizzaOrderList.shift(); }
-        
+        if(pizzaOrders > 0)
+        {
+          if(pizzaOrderList.length > 0) 
+          {
+            curMoney += pizzaOrderList.shift();
+          }
+          pizzaOrders--;
+        }
       }
       
       // update the money counter variable (visible for the user)
       moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
       // mechanism that calls back this function as long as the plus counter is larger than 0
-      if (plusCounter>0){
+      if(plusCounter>0) {
         setTimeout(function(){
           ReducePlusCounter();
         }, plusCounterDecreaseSpeed)
       }
       
-      if (pizzasWarmedUp == winCondition) {
+      if(pizzasWarmedUp == winCondition) {
+        console.log("current level: " + currentLevel + " Reduce Plus counter function");
         currentLevel++;
         GetLevel();
       }
@@ -166,6 +203,7 @@ function pizzaButtonOnClick () {
     // when the initial pizza storage of 50 is used up
     } else if (currentLevel==1) {
       // step up to level 2 and call GetLevel function
+      console.log("current level: " + currentLevel + " PizzaButton On Click");
       currentLevel++;
       GetLevel();
     }

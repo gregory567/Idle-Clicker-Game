@@ -1,5 +1,5 @@
 //set new winCondition and show the instructions modal for this level
-winCondition = 500;
+winCondition = 5000;
 showModalLevel3();
 l3active = true;
 console.log("You reached level 3!");
@@ -24,10 +24,7 @@ scriptContainer.appendChild(pizzaDemandComponent);
 var advertisingComponent = document.createElement('script');
 advertisingComponent.setAttribute("src", "./include js/level3Components/advertisingComponent.js");
 scriptContainer.appendChild(advertisingComponent);
-//include event Component
-var eventComponent = document.createElement('script');
-eventComponent.setAttribute("src", "./include js/events.js");
-scriptContainer.appendChild(eventComponent);
+
 
 //function for showing the instructions modal of level 3
 function showModalLevel3() {

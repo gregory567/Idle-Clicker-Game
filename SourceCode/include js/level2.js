@@ -1,5 +1,5 @@
 //set new winCondition and show the instructions modal for this level
-winCondition = 150;
+winCondition = 500;
 
 //For power outage event
 var autoOn = true;
@@ -63,11 +63,19 @@ createAdButton.classList.add("button");
 createAdButton.setAttribute("onclick", "CreateAd()");
 createAdField.appendChild(createAdButton);
 
+function OnAdClicked()
+{
+    curMoney+=0.1; //Player gets 10 cents per click
+    moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+    window.open('adSite.html');
+}
+
 function CreateAd() { //Enables advertisement and removes the ability to enable it
 
     leftAd.style.opacity = 1;
-    curMoney += 10;
-    moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
+    leftAd.onclick=OnAdClicked;
+    
+    
     newCol3.removeChild(createAdField);
 }
 
@@ -166,7 +174,7 @@ function createAutomat(){
         // increase pizza multiplier
         pizzaMultiplier++;
         // increase price of automat
-        automatPrice = automatPrice*(Math.pow(1.5,pizzaMultiplier));
+        automatPrice = automatPrice*(Math.pow(1.05,pizzaMultiplier));
         automatPrice = Math.round(automatPrice*100)/100; //Round to two decimals
         // display updated variables to user
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
@@ -187,15 +195,24 @@ function createAutomat(){
 
 
 // generates 1 pizza automatically every second
-function GeneratePizza(){
-
+function GeneratePizza() {
     // as long as the pizza storage is not used up
-    if (autoOn && (pizzaStorage > 0) && (pizzaOrders > 0)){
+    if (autoOn && (pizzaStorage > 0) && (pizzaOrders > 0)) {
         // decrease pizza storage by 1
         pizzaStorage--;
         // decrement the number of pizzaOrders, when level 3 is active
+        // add the correct order-price to "curMoney"
         if(l3active) {
+            // when pizzaOrderList not empty, than add to curMoney and delete this item from list
+            if(pizzaOrderList.length > 0) {
+                curMoney += pizzaOrderList.shift();
+            }
+            // decrement pizzaOrders
             pizzaOrders--;
+        }
+        else { // level 3 is not active yet
+            // increment the current funds
+            curMoney += pizzaValue;
         }
         pizzaStorageContainer.innerHTML = "Frozen Pizzas: " + pizzaStorage;
 
@@ -203,8 +220,6 @@ function GeneratePizza(){
         pizzasWarmedUp++;
         // update the displayed number of prepared pizzas (visible for the user)
         pizzaCounter.innerText = pizzasWarmedUp;
-        // increment the current funds
-        curMoney += pizzaValue;
         // update the money counter variable (visible for the user)
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
         if (pizzasWarmedUp == winCondition) {
@@ -218,8 +233,7 @@ function GeneratePizza(){
 function toggleAutoBuyers()
 {
     const onoff = document.getElementById("ab-onoff");
-    if (onoff != null){
-
+    if(onoff != null){
         if (autoBuyerActive == true){
 
             onoff.innerHTML = "OFF";
@@ -258,7 +272,7 @@ function createAutoBuyer()
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
         autoBuyerAmount++;
-        autoBuyerPrice = autoBuyerPrice*Math.pow(autoBuyerPriceGrowth, autoBuyerAmount);
+        autoBuyerPrice = autoBuyerPrice*Math.pow(1.05, autoBuyerAmount);
         autoBuyerPrice = Math.round(autoBuyerPrice*100)/100;
         updateAutoBuyerWindow();
     }

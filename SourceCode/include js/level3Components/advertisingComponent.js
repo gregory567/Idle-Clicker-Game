@@ -48,7 +48,7 @@ function increasePosterPrice() {
         curMoney-=posterPrice;
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
-        posterPrice = posterPrice*1.5;
+        posterPrice = posterPrice*1.1;
         posterPrice = Math.round(posterPrice*100)/100;
         posterText.innerHTML = "Cost: " + posterPrice;
         increaseDemand(10); //posters give a 10% boost of the current demand 
@@ -61,10 +61,10 @@ function increaseFlyerPrice() {
         curMoney-=flyerPrice;
         moneyCounter.innerText = parseFloat(curMoney).toFixed(2);
 
-        flyerPrice = flyerPrice*1.5;
+        flyerPrice = flyerPrice*1.05;
         flyerPrice = Math.round(flyerPrice*100)/100;
         flyerText.innerHTML = "Cost: " + flyerPrice;      
-        increaseDemandTemporary(25); //flyers give a temporary 25% boost of the current demand
+        increaseDemandTemporary(30); //flyers give a temporary 25% boost of the current demand
     }
 }
 
@@ -91,7 +91,7 @@ function decreaseDemand(decrease) {
             setPizzaDemand(pizzaDemand * (1 - ((decrease-5)/100))); // same to above
         }
         flyerButton.disabled = false;       
-    }, 10000)
+    }, 180000) //180000 = 1 1/2 ingame days
 }
 
 function decreaseDemandInstant(decrease) {

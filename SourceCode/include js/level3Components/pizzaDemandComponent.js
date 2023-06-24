@@ -29,15 +29,20 @@ function updatePizzaOrdersText() {
 setInterval(function() {
     updatePizzaOrdersValue();
     setInterval(updatePizzaOrdersText, 100);
-}, 5000);
+}, 3500);
 
 // function for getting new orders every 5 seconds --> 1hour in the game
 function updatePizzaOrdersValue() {
+    // calculating new orders
     let newOrders = Math.round(21 * Math.pow(0.8, pizzaValue) * pizzaDemand/100);
-    pizzaOrders += newOrders;
-    for (var i = 0; i < newOrders; i++)
+    // When pizzaOrders are above 1000, you stop taking new orders
+    if(pizzaOrders < 1000)
     {
-        pizzaOrderList.push(pizzaValue); //Add order to list
+        pizzaOrders += newOrders;
+        for (var i = 0; i < newOrders; i++)
+        {
+            pizzaOrderList.push(pizzaValue); //Add order to list
+        }
     }
 }
 
@@ -70,7 +75,5 @@ pizzaButtonOnClick = function () {
       setTimeout(function() {
           pizzaButton.style.transform = "scale(1.05)";
       }, 50);
-
-    // when the initial pizza storage of 50 is used up
     }
 };
