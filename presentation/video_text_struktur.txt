@@ -7,9 +7,10 @@ Video - Text und Struktur:
 Projektidee:
 -Spiel beginnen und passende Stellen zeigen (manchmal fast forward, manchmal langsam)-
 "Im Rahmen des IT-Projekts haben wir ein Browser Game entwickelt, bei dem Pizzen produziert werden und das Ziel ist, am Ende die meisten Pizzen erstellt zu haben.
-Anfangs gibt es einen einzigen Button zum Aufwärmen von Pizzen, welche automatisch verkauft werden.
-Im weiteren Spielfortschritt schaltet der User durch jedes Level neue Features frei: zum Beispiel eine Pizza-Maschine zur Produktion oder einen automatischen Pizza-Einkäufer.
+Anfangs gibt es einen einzelnen Button zum Aufwärmen von Pizzen, welche automatisch verkauft werden.
+Im weiteren Spielfortschritt schaltet der User durch jedes Level neue Features frei: zum Beispiel eine Pizza-Maschine zur Produktion oder einen automatischen Pizza-Einkäufer. Die beiden Maschinen können beliebig oft gekauft werden, steigen aber exponentiell im Preis.
 Nach 500 verkauften Pizzen bekommt der Spieler Bestellungen, welche von der Nachfrage und dem Verkaufspreis abhängen. Ein hoher Verkaufspreis minimiert die Bestellungen, erhöht jedoch den Gewinn und vice versae. Die Nachfrage wird durch temporäre oder konstante Werbung erhöht - es entstehen mehr Bestellungen.
+Genau wie bei anderen Clicker-Games wollen wir, dass der Spieler am Anfang sehr viel Klicken muss, damit gegen Ende hin fast nur noch Organisation im Vordergrund steht.
 Nach 5000 Pizzen konkurriert das eigene Geschäft gegen andere Pizzerien in der Stadt um die meist verkauften Pizzen. Mit dem Erreichen des ersten Platzes endet das Spiel und kann neu gestartet werden."
 
 Implementierung:
@@ -17,17 +18,18 @@ Implementierung:
 "Die Funktionalität unseres Klicker-Games haben wir rein in Javascript programmiert und zur Darstellung wurde neben HMTL auch mit CSS gearbeitet.
 Wir haben uns am Anfang des Projekts für Visual Studio Code als Entwicklungsumgebungs und für Github als Code-Repository entschieden. 
 Mehr als 80% des Projektes wurde in Javascript geschrieben - deshalb haben wir einzelne Spiellevels in Komponenten unterteilt, um Übersicht und Programmordnung zu schaffen. Zum Beispiel gibt es für das dritte Level die Komponenten: Werbung, Nachfrage und Preis.
-Während VS Code für alle Projektmitglieder bekannt war, mussten wir den Umgang mit Branches in Github erstmals umsetzen und haben pro Sprint jeweils eine Branch erstellt, damit strukturierte und nachvollziehbare Entwicklung möglich ist. Eine Unterteilung der Branches nach neuen Funtkionalitäten war nicht notwendig, weil alle Features zusammenhängend sind und konkrete Abgrenzungen nur selten möglich waren. Die Ordnerstruktur wurde nach den Moodle-Vorgaben umgesetzt."
+Während VS Code für alle Projektmitglieder bekannt war, mussten wir den Umgang mit Branches in Github erstmals umsetzen und haben pro Sprint jeweils eine Branch erstellt, damit strukturierte und nachvollziehbare Entwicklung möglich ist. Eine Unterteilung der Branches nach neuen Funtkionalitäten war nicht notwendig, weil alle Features zusammenhängend sind und konkrete Abgrenzungen nur selten möglich waren. Hier zu sehen sind die einzelnen Spints in Form von Branches - im fünften Sprint sind zum Beispiel die Nachfrage und die Bestellungen dazugekommen. Im Vergleich dazu ist im momentanen Stand die gefragte Ordnerstruktur mit neuen Implementierungen vorhanden."
 
 Projekt-Planung:
 -Zeigen von Trello mit einzelnen Karten-
 "Die Projektorganisation und -Entwicklung wurde nach Kanban umgesetzt. Mithilfe von "Trello" visualisieren wir unser Kanban-Board: Eigene Spalten zum Backlog, in Bearbeitung oder fertige Sprints sind als Spalten zu sehen und beinhalten die jeweils passenden Karten. So beinhaltet der siebte Sprint die Erstellung der Manuals, Bugfixes oder letzte Komponenten. 
 Swimmlanes sind für unsere Projektgröße nicht notwendig und wurden daher weggelassen.
-Die zweiwöchigen Sprints beginnen mit der Erstellung der Karten für den kommenden Sprint und enden stets mit einem internen Meeting (zur Besprechung und Dokumentation) - gegebenfalls gibt es auch ein Sprint-Meeting mit unserem Betreuer."
+Die zweiwöchigen Sprints beginnen mit der Erstellung der Karten für den kommenden Sprint und enden stets mit einem internen Meeting (zur Besprechung und Dokumentation) - gegebenfalls gibt es auch ein Sprint-Meeting mit unserem Betreuer.
+Bei jeder Karte haben wir die zugehörigen Mitglieder und den Aufwand angegeben."
 
 Momentaner Status:
 -Demonstration vom Restaurant-Management-Konzept-Bild-
-"Dank der Einfachheit der Spiellogik präsentieren wir zwar ein fertiges Spiel, können aber auch zusätzliche Komponenten hinzufügen. Unter Anderem haben wir vor, in den Sommerferien an dem Projekt weiter zu arbeiten und auf ein Restaurant-Management zu erweitern."
+"Wegen der Einfachheit der Spiellogik präsentieren wir zwar ein fertiges Spiel, können aber stets neue Komponenten hinzufügen. In den Sommerferien haben wir geplant, am Projekt weiter zu arbeiten und auf ein Restaurant-Management zu erweitern."
 
 
 
